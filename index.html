@@ -680,6 +680,175 @@
     }
 
     /* ============================================================
+       ADVANTAGES  (sticky heading left, scrolling boxes right -
+       same format as Zen Amps "Hardware, not hype")
+       ============================================================ */
+    .ahm-adv {
+      --ahm-adv-pane-min: 24vh;
+      position: relative;
+      padding: 12vh 0 14vh;
+    }
+
+    .ahm-adv__layout {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.95fr) minmax(0, 1.3fr);
+      gap: clamp(3rem, 7vw, 6rem);
+      align-items: start;
+      max-width: var(--ahm-maxw);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* heading fixes (sticky) while the boxes scroll, then unlocks at section end */
+    .ahm-adv__left {
+      position: sticky;
+      top: 16vh;
+    }
+
+    .ahm-adv__title {
+      font-family: 'Barlow Condensed', 'Barlow', sans-serif;
+      font-size: clamp(2.4rem, 4.6vw, 3.6rem);
+      line-height: 0.98;
+      text-transform: uppercase;
+      margin: 0;
+    }
+
+    .ahm-adv__title span {
+      color: var(--ahm-blue);
+    }
+
+    .ahm-adv__right {
+      padding-top: 1vh;
+    }
+
+    .ahm-adv__pane {
+      position: relative;
+      min-height: var(--ahm-adv-pane-min);
+      display: flex;
+      align-items: center;
+      margin: 0 0 3rem;
+      padding: clamp(2rem, 4vw, 3.4rem);
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.008)),
+        rgba(0, 0, 0, 0.16);
+      border: 1px solid var(--ahm-line);
+      border-radius: 8px;
+      box-shadow: 6px 6px 18px rgba(0, 0, 0, 0.45);
+      opacity: 0.3;
+      transform: scale(0.965) translateY(14px);
+      transition:
+        opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.95s cubic-bezier(0.16, 1, 0.3, 1),
+        background 0.65s ease,
+        border-color 0.65s ease;
+    }
+
+    /* accent bar that fills on the active box */
+    .ahm-adv__pane::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 0;
+      background: var(--ahm-blue);
+      transition: height 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .ahm-adv__pane.is-active {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.012)),
+        rgba(0, 0, 0, 0.22);
+      border-color: rgba(255, 255, 255, 0.18);
+    }
+
+    .ahm-adv__pane.is-active::before {
+      height: 100%;
+    }
+
+    .ahm-adv__pane-inner {
+      width: 100%;
+      max-width: 640px;
+    }
+
+    .ahm-adv__pane h3 {
+      margin: 0 0 1.1rem;
+      color: var(--ahm-blue);
+      font-family: 'Barlow', sans-serif;
+      font-size: 1rem;
+      line-height: 1;
+      font-weight: 700;
+      letter-spacing: 0.16rem;
+      text-transform: uppercase;
+    }
+
+    .ahm-adv__pane p {
+      margin: 0;
+      font-size: clamp(1rem, 1.5vw, 1.12rem);
+      line-height: 1.62;
+      color: var(--ahm-muted);
+    }
+
+    /* mobile: stack, no sticky, no fade */
+    @media (max-width: 820px) {
+      .ahm-adv__layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .ahm-adv__left {
+        position: static;
+      }
+
+      .ahm-adv__pane {
+        opacity: 1;
+        transform: none;
+        margin-bottom: 1.4rem;
+      }
+    }
+
+    /* ============================================================
+       PROCESS  ("How It Works" steps over a Studio1 background)
+       ============================================================ */
+    .ahm-process {
+      /* ===== BACKGROUND KNOBS ===== */
+      --process-dark: 0.6;
+      /* overlay darkness 0 (none) .. 1 (black) */
+      --process-saturate: 1;
+      /* 1 = normal, <1 = muted, >1 = punchier */
+      --process-blur: 2px;
+      /* image blur */
+      position: relative;
+      overflow: hidden;
+      /* clips the expanded blurred background */
+      padding: 24vh 0 16vh;
+      /* extra top padding above this section */
+    }
+
+    .ahm-process__bg {
+      position: absolute;
+      inset: -60px;
+      /* expand so the blur doesn't show transparent edges */
+      background: url('images/Studio1.jpg') center/cover no-repeat;
+      filter: saturate(var(--process-saturate)) blur(var(--process-blur));
+      z-index: 0;
+    }
+
+    .ahm-process__shade {
+      position: absolute;
+      inset: 0;
+      background: rgba(10, 10, 10, var(--process-dark));
+      z-index: 0;
+    }
+
+    .ahm-process > .ahm-wrap {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ============================================================
        FOOTER
        ============================================================ */
     .ahm-footer {
@@ -988,35 +1157,49 @@
       <!-- opaque cover: rises from the bottom and covers the frozen image -->
       <div class="ahm-crucial__cover">
 
-        <!-- ADVANTAGES -->
-        <section class="ahm-section">
-          <div class="ahm-wrap ahm-reveal">
-            <h2 class="ahm-h2">The Advantages of Online Mixing</h2>
-            <div class="ahm-cards">
-              <div class="ahm-card">
-                <h3>Evaluation</h3>
-                <p>Take your time, and listen in your own environment &ndash; at home, in the car etc. This approach
-                  allows for thoughtful feedback, unlike hasty decisions made in the studio.</p>
-              </div>
-              <div class="ahm-card">
-                <h3>Recallability</h3>
-                <p>I can revisit the mix a few days later to implement any changes you may have. This flexibility is
-                  difficult to achieve in traditional studios, where revisions are slow and costly.</p>
-              </div>
-              <div class="ahm-card">
-                <h3>Affordability</h3>
-                <p>Commercial studios are expensive, and there is always a certain amount of clock-watching. Working
-                  from my own studio means I can offer an affordable service without compromising on quality.</p>
-              </div>
+        <!-- ADVANTAGES (sticky heading left, scrolling boxes right) -->
+        <section class="ahm-adv" id="ahmAdv">
+          <div class="ahm-adv__layout">
+            <aside class="ahm-adv__left">
+              <h2 class="ahm-adv__title">The <span>Advantages</span><br>of Online Mixing</h2>
+            </aside>
+
+            <div class="ahm-adv__right">
+              <article class="ahm-adv__pane">
+                <div class="ahm-adv__pane-inner">
+                  <h3>Evaluation</h3>
+                  <p>Take your time, and listen in your own environment &ndash; at home, in the car etc. This
+                    approach allows for thoughtful feedback, unlike hasty decisions made in the studio.</p>
+                </div>
+              </article>
+
+              <article class="ahm-adv__pane">
+                <div class="ahm-adv__pane-inner">
+                  <h3>Recallability</h3>
+                  <p>I can revisit the mix a few days later to implement any changes you may have. This flexibility
+                    is difficult to achieve in traditional studios, where revisions are slow and costly.</p>
+                </div>
+              </article>
+
+              <article class="ahm-adv__pane">
+                <div class="ahm-adv__pane-inner">
+                  <h3>Affordability</h3>
+                  <p>Commercial studios are expensive, and there is always a certain amount of clock-watching.
+                    Working from my own studio means I can offer an affordable service without compromising on
+                    quality.</p>
+                </div>
+              </article>
             </div>
           </div>
         </section>
 
-        <!-- HOW IT WORKS -->
-        <section class="ahm-section" style="padding-top:0;">
+        <!-- PROCESS (was How It Works) - steps over a Studio1 background -->
+        <section class="ahm-process" id="process">
+          <div class="ahm-process__bg"></div>
+          <div class="ahm-process__shade"></div>
           <div class="ahm-wrap ahm-reveal">
-            <p class="ahm-eyebrow">The process</p>
-            <h2 class="ahm-h2">How It Works</h2>
+            <p class="ahm-eyebrow">How it works</p>
+            <h2 class="ahm-h2">The Process</h2>
             <p class="ahm-lead"><span style="color:var(--ahm-muted)">You&rsquo;ll receive detailed instructions once
                 booked in, but the short version is:</span></p>
 
@@ -1180,6 +1363,61 @@
       function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
       window.addEventListener('scroll', onScroll, { passive: true });
       window.addEventListener('resize', update);
+      update();
+    })();
+
+    /* ---- Advantages: highlight the box nearest the focus line as you scroll ---- */
+    (function () {
+      var root = document.getElementById('ahmAdv');
+      if (!root) return;
+      var items = Array.prototype.slice.call(root.querySelectorAll('.ahm-adv__pane'));
+      if (!items.length) return;
+      var ticking = false;
+      function update() {
+        ticking = false;
+        var focus = window.innerHeight * 0.52;   // KNOB: where a box becomes "active" (0.52 = just below centre)
+        var closest = null, closestDist = Infinity;
+        items.forEach(function (item) {
+          var rect = item.getBoundingClientRect();
+          var center = rect.top + rect.height / 2;
+          var dist = Math.abs(center - focus);
+          if (dist < closestDist) { closestDist = dist; closest = item; }
+        });
+        items.forEach(function (item) { item.classList.toggle('is-active', item === closest); });
+      }
+      function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll);
+      update();
+    })();
+
+    /* ---- Advantages: release the sticky heading so its bottom rides in line
+            with the bottom of the LAST box (instead of sticking to section end) ---- */
+    (function () {
+      var section = document.getElementById('ahmAdv');
+      if (!section) return;
+      var left = section.querySelector('.ahm-adv__left');
+      var panes = section.querySelectorAll('.ahm-adv__pane');
+      if (!left || !panes.length) return;
+      var lastPane = panes[panes.length - 1];
+
+      var ALIGN_NUDGE = 0;   // KNOB (px): positive = heading releases EARLIER (rides above the last box bottom)
+
+      var ticking = false;
+      function update() {
+        ticking = false;
+        if (window.innerWidth <= 820) { left.style.transform = ''; return; }
+        var sr = section.getBoundingClientRect();
+        if (sr.bottom < 0 || sr.top > window.innerHeight) { left.style.transform = ''; return; }
+        left.style.transform = 'none';                       // measure natural pinned position
+        var lhsBottom = left.getBoundingClientRect().bottom;
+        var rhsBottom = lastPane.getBoundingClientRect().bottom;
+        var overhang = lhsBottom - rhsBottom + ALIGN_NUDGE;  // >0 once the heading would hang below the last box
+        left.style.transform = overhang > 0 ? 'translateY(' + (-overhang) + 'px)' : 'none';
+      }
+      function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll);
       update();
     })();
   </script>
