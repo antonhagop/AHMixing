@@ -78,21 +78,28 @@
 
     /* ============================================================ HEADER ============================================================ */
     .ahm-header {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000; height: 56px;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 24px 0 20px; transform: translateY(0);
-      transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), background 0.3s ease; will-change: transform;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000; height: 50px;
+      display: flex; align-items: center; justify-content: flex-end;
+      padding: 0; transform: translateY(0);
+      transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1); will-change: transform;
     }
-    .ahm-header--scrolled { background: rgba(10, 10, 10, 0.55); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
     .ahm-header--hidden { transform: translateY(-100%); }
-    .ahm-header__logo img { height: 36px; width: auto; }
-    .ahm-nav { display: flex; align-items: center; gap: 34px; }
+    /* frosted, rounded strip on the right - matches the home page */
+    .ahm-nav {
+      display: flex; align-items: center; gap: 34px; height: 100%;
+      padding: 0 22px 0 30px; border-radius: 0 0 0 10px;
+      background: rgba(10, 10, 10, 0.1);
+      -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+    }
     .ahm-nav__link {
       color: var(--ahm-muted); text-decoration: none; font-size: 0.92rem; font-weight: 600;
       letter-spacing: 0.04em; text-transform: uppercase; transition: color 0.25s ease, transform 0.25s ease;
     }
     .ahm-nav__link:hover { color: var(--ahm-blue); transform: scale(1.08); }
     .ahm-nav__link--active { color: var(--ahm-blue); }
+    .ahm-nav__ig { display: flex; align-items: center; }
+    .ahm-nav__ig img { height: 22px; width: auto; opacity: 0.8; transition: opacity 0.25s ease, transform 0.25s ease; }
+    .ahm-nav__ig:hover img { opacity: 1; transform: scale(1.1); }
 
     /* ============================================================ PAGE HERO ============================================================ */
     .ahm-hero {
@@ -146,10 +153,7 @@
     .ahm-form__note { color: #8a8a8a; font-size: 0.82rem; margin: 10px 0 0; }
 
     /* ============================================================ FOOTER ============================================================ */
-    .ahm-footer { text-align: center; padding: 54px 24px 60px; }
-    .ahm-footer__social { display: inline-flex; margin-bottom: 20px; }
-    .ahm-footer__social img { width: 30px; height: 30px; opacity: 0.7; transition: opacity 0.25s ease, transform 0.25s ease; }
-    .ahm-footer__social:hover img { opacity: 1; transform: scale(1.1); }
+    .ahm-footer { text-align: center; padding: 40px 24px 8px; }
     .ahm-footer__copy { color: #8a8a8a; font-size: 0.85rem; letter-spacing: 0.04em; }
 
     /* ============================================================ REVEAL ============================================================ */
@@ -164,7 +168,6 @@
       .ahm-form__row { grid-template-columns: 1fr; gap: 0; }
       .ahm-nav { gap: 20px; }
       .ahm-nav__link { font-size: 0.8rem; }
-      .ahm-header__logo img { height: 30px; }
     }
   </style>
 </head>
@@ -173,14 +176,14 @@
 
   <!-- HEADER -->
   <header class="ahm-header" id="ahmHeader">
-    <a href="index.html" class="ahm-header__logo" aria-label="Anton Hagop Mixing - home">
-      <img src="images/logo.png" alt="Anton Hagop Mixing">
-    </a>
     <nav class="ahm-nav">
       <a href="index.html" class="ahm-nav__link">Home</a>
-      <a href="mixing.html" class="ahm-nav__link">Mixing</a>
       <a href="listen.html" class="ahm-nav__link">Listen</a>
       <a href="contact.html" class="ahm-nav__link ahm-nav__link--active" aria-current="page">Contact</a>
+      <a href="https://www.instagram.com/antonhagopmixing/" target="_blank" rel="noopener"
+        class="ahm-nav__ig" aria-label="Anton Hagop Mixing on Instagram">
+        <img src="images/instagram.png" alt="Instagram">
+      </a>
     </nav>
   </header>
 
@@ -264,10 +267,6 @@
 
   <!-- FOOTER -->
   <footer class="ahm-footer">
-    <a class="ahm-footer__social" href="https://www.instagram.com/antonhagopmixing/" target="_blank"
-      rel="noopener" aria-label="Anton Hagop Mixing on Instagram">
-      <img src="images/instagram.png" alt="Instagram">
-    </a>
     <p class="ahm-footer__copy">Copyright &copy; 2026 &ndash; Anton Hagop Mixing &ndash; All Rights Reserved.</p>
   </footer>
 
