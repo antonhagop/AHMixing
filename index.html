@@ -814,11 +814,11 @@
        ============================================================ */
     .ahm-process {
       /* ===== BACKGROUND KNOBS ===== */
-      --process-dark: 0.6;
+      --process-dark: 0.75;
       /* overlay darkness 0 (none) .. 1 (black) */
-      --process-saturate: 1;
+      --process-saturate: 0.1;
       /* 1 = normal, <1 = muted, >1 = punchier */
-      --process-blur: 2px;
+      --process-blur: 1px;
       /* image blur */
       position: relative;
       overflow: hidden;
@@ -843,7 +843,7 @@
       z-index: 0;
     }
 
-    .ahm-process > .ahm-wrap {
+    .ahm-process>.ahm-wrap {
       position: relative;
       z-index: 1;
     }
