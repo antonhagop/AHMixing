@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anton Hagop Mixing | ARIA Award-Winning Mixing Engineer</title>
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+
+  <meta name="description"
+    content="ARIA award winning engineer - silverchair, Powderfinger, Missy Higgins. Indie friendly rates - punchy, radio-ready mixes for your songs.">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Anton Hagop Mixing">
+  <meta property="og:title" content="Anton Hagop Mixing | ARIA Award-Winning Mixing Engineer">
+  <meta property="og:description"
+    content="Punchy, radio-ready mixes from an ARIA award-winning engineer. Indie-friendly rates.">
+
+  <!-- Fonts: Barlow, shared with Zen Amps for a consistent house style -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@500;600&display=swap"
+    rel="stylesheet">
+
+  <style>
+    /* ============================================================
+       BRAND TOKENS  (edit these once, they cascade everywhere)
+       ============================================================ */
+    :root {
+      --ahm-bg-1: #0A0A0A;
+      --ahm-bg-2: #272727;
+      --ahm-blue: #92a4b1;
+      /* steel blue accent, shared with Zen Amps */
+      --ahm-text: #ffffff;
+      --ahm-muted: #c9c9c9;
+      --ahm-line: rgba(146, 164, 177, 0.25);
+      --ahm-maxw: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: linear-gradient(90deg, var(--ahm-bg-1), var(--ahm-bg-2));
+      background-attachment: fixed;
+      font-family: 'Barlow', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 1.15rem;
+      font-weight: 300;
+      line-height: 1.7;
+      letter-spacing: 0.01rem;
+      color: var(--ahm-text);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: 'Barlow Condensed', 'Barlow', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      line-height: 1.05;
+      margin: 0;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .ahm-wrap {
+      max-width: var(--ahm-maxw);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* shared section rhythm */
+    .ahm-section {
+      padding: 96px 0;
+    }
+
+    .ahm-eyebrow {
+      color: var(--ahm-blue);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-size: 0.82rem;
+      margin: 0 0 14px;
+    }
+
+    .ahm-h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin: 0 0 22px;
+    }
+
+    .ahm-lead p {
+      color: var(--ahm-muted);
+      margin: 0 0 18px;
+      max-width: 56ch;
+    }
+
+    /* ---- buttons ---- */
+    .ahm-btn {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 13px 30px;
+      font-family: 'Barlow', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--ahm-text);
+      border: 1px solid var(--ahm-blue);
+      border-radius: 4px;
+      background: transparent;
+      transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+    }
+
+    .ahm-btn:hover {
+      background: var(--ahm-blue);
+      color: #0A0A0A;
+      transform: translateY(-2px);
+    }
+
+    /* ============================================================
+       HEADER  (fixed, right-aligned blur nav - shared with Zen Amps)
+       ============================================================ */
+    .ahm-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px 0 20px;
+      transform: translateY(0);
+      transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), background 0.3s ease;
+      will-change: transform;
+    }
+
+    .ahm-header--scrolled {
+      background: rgba(10, 10, 10, 0.55);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+    }
+
+    .ahm-header--hidden {
+      transform: translateY(-100%);
+    }
+
+    .ahm-header__logo img {
+      height: 36px;
+      width: auto;
+    }
+
+    .ahm-nav {
+      display: flex;
+      align-items: center;
+      gap: 34px;
+    }
+
+    .ahm-nav__link {
+      color: var(--ahm-muted);
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.25s ease, transform 0.25s ease;
+    }
+
+    .ahm-nav__link:hover {
+      color: var(--ahm-blue);
+      transform: scale(1.08);
+    }
+
+    .ahm-nav__link--active {
+      color: var(--ahm-blue);
+    }
+
+    /* ============================================================
+       HERO  (darkened studio photo behind the headline)
+       ============================================================ */
+    .ahm-hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      padding: 120px 24px 80px;
+    }
+
+    .ahm-hero__bg {
+      position: absolute;
+      inset: 0;
+      background: url('images/hero-studio.png') center/cover no-repeat;
+      filter: brightness(0.4) saturate(0.9);
+      transform: scale(1.05);
+      z-index: 0;
+    }
+
+    /* gradient veil so text stays legible and blends to the page bg */
+    .ahm-hero__veil {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(10, 10, 10, 0.55) 0%, rgba(10, 10, 10, 0.35) 45%, rgba(20, 20, 20, 0.95) 100%);
+      z-index: 1;
+    }
+
+    .ahm-hero__inner {
+      position: relative;
+      z-index: 2;
+      max-width: 880px;
+    }
+
+    .ahm-hero__logo {
+      width: 96px;
+      height: 96px;
+      margin: 0 auto 26px;
+      border-radius: 50%;
+    }
+
+    .ahm-hero__title {
+      font-size: clamp(2.6rem, 7vw, 5.2rem);
+      margin: 0 0 18px;
+    }
+
+    .ahm-hero__sub {
+      font-family: 'Barlow', sans-serif;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      font-size: clamp(0.8rem, 1.8vw, 1.05rem);
+      color: var(--ahm-blue);
+      margin: 0 0 34px;
+    }
+
+    /* ============================================================
+       SPLIT  (text + image, two columns, alternating)
+       ============================================================ */
+    .ahm-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .ahm-split__media img {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.55);
+    }
+
+    /* reverse the column order: image first on screen */
+    .ahm-split--reverse .ahm-split__text {
+      order: 2;
+    }
+
+    .ahm-split--reverse .ahm-split__media {
+      order: 1;
+    }
+
+    /* ============================================================
+       ALBUM STRIP  (selected discography)
+       ============================================================ */
+    .ahm-albums {
+      text-align: center;
+    }
+
+    .ahm-albums__row {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 18px;
+      margin: 36px 0 8px;
+    }
+
+    .ahm-albums__row img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 6px;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s ease;
+    }
+
+    .ahm-albums__row img:hover {
+      transform: translateY(-4px) scale(1.02);
+    }
+
+    /* ============================================================
+       TESTIMONIALS CAROUSEL
+       ============================================================ */
+    .ahm-quotes {
+      text-align: center;
+      border-top: 1px solid var(--ahm-line);
+      border-bottom: 1px solid var(--ahm-line);
+    }
+
+    .ahm-quotes__stage {
+      position: relative;
+      max-width: 760px;
+      margin: 30px auto 0;
+      min-height: 230px;
+    }
+
+    .ahm-quote {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .ahm-quote--active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .ahm-quote__text {
+      font-size: clamp(1.1rem, 2.2vw, 1.45rem);
+      font-weight: 300;
+      line-height: 1.6;
+      color: #f0f0f0;
+      font-style: italic;
+      margin: 0 0 20px;
+    }
+
+    .ahm-quote__name {
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--ahm-text);
+      font-size: 1rem;
+    }
+
+    .ahm-quote__band {
+      color: var(--ahm-blue);
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+    }
+
+    .ahm-quotes__controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 22px;
+      margin-top: 26px;
+    }
+
+    .ahm-quotes__arrow {
+      background: none;
+      border: 1px solid var(--ahm-line);
+      color: var(--ahm-muted);
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: color 0.25s ease, border-color 0.25s ease;
+    }
+
+    .ahm-quotes__arrow:hover {
+      color: var(--ahm-blue);
+      border-color: var(--ahm-blue);
+    }
+
+    .ahm-quotes__dots {
+      display: flex;
+      gap: 9px;
+    }
+
+    .ahm-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.25);
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      transition: background 0.25s ease, transform 0.25s ease;
+    }
+
+    .ahm-dot--active {
+      background: var(--ahm-blue);
+      transform: scale(1.25);
+    }
+
+    /* ============================================================
+       FOOTER
+       ============================================================ */
+    .ahm-footer {
+      text-align: center;
+      padding: 54px 24px 60px;
+    }
+
+    .ahm-footer__social {
+      display: inline-flex;
+      margin-bottom: 20px;
+    }
+
+    .ahm-footer__social img {
+      width: 30px;
+      height: 30px;
+      opacity: 0.7;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .ahm-footer__social:hover img {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+
+    .ahm-footer__copy {
+      color: #8a8a8a;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+    }
+
+    /* ============================================================
+       REVEAL ON SCROLL
+       ============================================================ */
+    .ahm-reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .ahm-reveal--in {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .ahm-reveal {
+        opacity: 1;
+        transform: none;
+      }
+
+      html {
+        scroll-behavior: auto;
+      }
+    }
+
+    /* ============================================================
+       RESPONSIVE
+       ============================================================ */
+    @media (max-width: 820px) {
+      .ahm-section {
+        padding: 70px 0;
+      }
+
+      .ahm-split {
+        grid-template-columns: 1fr;
+        gap: 34px;
+      }
+
+      .ahm-split--reverse .ahm-split__text {
+        order: 1;
+      }
+
+      .ahm-split--reverse .ahm-split__media {
+        order: 2;
+      }
+
+      .ahm-albums__row {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .ahm-nav {
+        gap: 20px;
+      }
+
+      .ahm-nav__link {
+        font-size: 0.8rem;
+      }
+
+      .ahm-header__logo img {
+        height: 30px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .ahm-albums__row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============================================================
+       HEADER
+       ============================================================ -->
+  <header class="ahm-header" id="ahmHeader">
+    <a href="index.html" class="ahm-header__logo" aria-label="Anton Hagop Mixing - home">
+      <img src="images/logo.png" alt="Anton Hagop Mixing">
+    </a>
+    <nav class="ahm-nav">
+      <a href="index.html" class="ahm-nav__link ahm-nav__link--active" aria-current="page">Home</a>
+      <a href="mixing.html" class="ahm-nav__link">Mixing</a>
+      <a href="listen.html" class="ahm-nav__link">Listen</a>
+      <a href="contact.html" class="ahm-nav__link">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ============================================================
+         HERO
+         ============================================================ -->
+    <section class="ahm-hero">
+      <div class="ahm-hero__bg"></div>
+      <div class="ahm-hero__veil"></div>
+      <div class="ahm-hero__inner">
+        <img class="ahm-hero__logo" src="images/logo.png" alt="Anton Hagop Mixing logo">
+        <h1 class="ahm-hero__title">Punchy,<br>Radio-Ready Mixes</h1>
+        <p class="ahm-hero__sub">ARIA Award-Winning Mixing Engineer</p>
+        <a href="contact.html" class="ahm-btn">Start Your Mix</a>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         WELCOME
+         ============================================================ -->
+    <section class="ahm-section">
+      <div class="ahm-wrap ahm-split ahm-reveal">
+        <div class="ahm-split__text ahm-lead">
+          <p class="ahm-eyebrow">Welcome</p>
+          <h2 class="ahm-h2">Sydney-Based Mixing Engineer</h2>
+          <p>I'm a Sydney based mixing engineer and staunch Australian music supporter. My sole focus is on
+            helping my clients get the absolute best out of their music via internationally-competitive mixes.</p>
+          <p>I love working with both established and emerging bands &ndash; so touch base if you have a recording
+            project on the go and would like to chat about mixing.</p>
+          <a href="mixing.html" class="ahm-btn">Mixing</a>
+        </div>
+        <div class="ahm-split__media">
+          <img src="images/anton-collage.png" alt="Anton Hagop at the mixing console in the studio">
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         ABOUT / CREDITS
+         ============================================================ -->
+    <section class="ahm-section">
+      <div class="ahm-wrap ahm-split ahm-split--reverse ahm-reveal">
+        <div class="ahm-split__text ahm-lead">
+          <p class="ahm-eyebrow">About</p>
+          <h2 class="ahm-h2">Hundreds of Records, Decades of Mixes</h2>
+          <p>Since the 90's I've produced, engineered and mixed singles, EP's and albums for hundreds of indie
+            bands, plus some of Australia's biggest artists.</p>
+          <p>Notable works include silverchair's <em>Diorama</em> album (for which I was awarded the 2002 ARIA
+            Engineer of the Year), plus collaborations with Powderfinger, Missy Higgins, The Superjesus, Birds of
+            Tokyo and Daniel Johns.</p>
+          <p>In recent years I've focused primarily on mixing via an online service designed to produce
+            exceptional results at indie-friendly rates.</p>
+          <a href="listen.html" class="ahm-btn">Listen</a>
+        </div>
+        <div class="ahm-split__media">
+          <img src="images/album-grid.jpg" alt="A selection of albums mixed by Anton Hagop">
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SELECTED DISCOGRAPHY STRIP
+         ============================================================ -->
+    <section class="ahm-section">
+      <div class="ahm-wrap ahm-albums ahm-reveal">
+        <p class="ahm-eyebrow">Selected Work</p>
+        <h2 class="ahm-h2">Records I've Had a Hand In</h2>
+        <div class="ahm-albums__row">
+          <img src="images/album-diorama.png" alt="silverchair - Diorama">
+          <img src="images/album-powderfinger.png" alt="Powderfinger - Vulture Street">
+          <img src="images/album-missy-higgins.png" alt="The Missy Higgins EP">
+          <img src="images/album-natalie-imbruglia.jpg" alt="Natalie Imbruglia - Counting Down the Days">
+          <img src="images/album-dissociatives.jpg" alt="The Dissociatives">
+        </div>
+        <a href="listen.html" class="ahm-btn">Listen</a>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         TESTIMONIALS CAROUSEL
+         ============================================================ -->
+    <section class="ahm-section ahm-quotes">
+      <div class="ahm-wrap ahm-reveal">
+        <p class="ahm-eyebrow">Testimonials</p>
+        <h2 class="ahm-h2">What Artists Say</h2>
+
+        <div class="ahm-quotes__stage" id="ahmQuoteStage">
+          <figure class="ahm-quote ahm-quote--active">
+            <blockquote class="ahm-quote__text">"I call Anton when I want a studio session to run like clockwork,
+              and need my drums to sound absolutely awesome. Just a great engineer that always delivers the goods
+              with professionalism and style."</blockquote>
+            <figcaption>
+              <span class="ahm-quote__name">Ben Gillies</span>
+              <span class="ahm-quote__band">silverchair</span>
+            </figcaption>
+          </figure>
+
+          <figure class="ahm-quote">
+            <blockquote class="ahm-quote__text">"Anton made all of our ideas sound better and added so much life
+              and energy to every song. He's super easy to talk to and work with and we'll definitely make
+              something together again &ndash; if he will have us!"</blockquote>
+            <figcaption>
+              <span class="ahm-quote__name">Wil Wagner</span>
+              <span class="ahm-quote__band">The Smith Street Band</span>
+            </figcaption>
+          </figure>
+
+          <figure class="ahm-quote">
+            <blockquote class="ahm-quote__text">"You sir, are a scholar and gentleman &ndash; and it's all sounding
+              really bloody great mate!"</blockquote>
+            <figcaption>
+              <span class="ahm-quote__name">Van Dyke Parks</span>
+              <span class="ahm-quote__band">Beach Boys, Bob Dylan, U2, The Byrds, Ringo Starr</span>
+            </figcaption>
+          </figure>
+
+          <figure class="ahm-quote">
+            <blockquote class="ahm-quote__text">"Anton is an absolute legend. Production conversations flow freely
+              and he has an innate ability to tap into our sound, so we can spend more of our time on the
+              songwriting. No challenge is too great &ndash; you won't be disappointed!"</blockquote>
+            <figcaption>
+              <span class="ahm-quote__name">Michael Millimaci</span>
+              <span class="ahm-quote__band">Scarlet Drive</span>
+            </figcaption>
+          </figure>
+
+          <figure class="ahm-quote">
+            <blockquote class="ahm-quote__text">"I did a lot research before approaching Anton to mix my song, and
+              it really paid off. He's an incredible engineer but what you are also getting is his musical
+              knowledge. The final mix was fantastic &ndash; highly recommended."</blockquote>
+            <figcaption>
+              <span class="ahm-quote__name">Andrew Kemp</span>
+              <span class="ahm-quote__band">The Monico</span>
+            </figcaption>
+          </figure>
+
+          <figure class="ahm-quote">
+            <blockquote class="ahm-quote__text">"Anton is a wizard! We recorded our EP in a lounge room and it came
+              back sounding like a big budget album from back in the hay day! Anton is a pro and a pleasure to work
+              with, and we're stoked with the results."</blockquote>
+            <figcaption>
+              <span class="ahm-quote__name">Ben Smith</span>
+              <span class="ahm-quote__band">Big Alcatraz</span>
+            </figcaption>
+          </figure>
+
+          <figure class="ahm-quote">
+            <blockquote class="ahm-quote__text">"We will never use anyone else to mix our music. Working with Anton
+              has been the highlight of my music career! From the moment I met him I was truly blown away with his
+              talent and kindness."</blockquote>
+            <figcaption>
+              <span class="ahm-quote__name">Nic Griffiths</span>
+              <span class="ahm-quote__band">My Kind Of Chaos</span>
+            </figcaption>
+          </figure>
+
+          <figure class="ahm-quote">
+            <blockquote class="ahm-quote__text">"Anton is such a seasoned pro. He seems to instantly understand
+              where you're at artistically and the mix was everything we had hoped for. He completely blew us away
+              with the results."</blockquote>
+            <figcaption>
+              <span class="ahm-quote__name">Zarz</span>
+              <span class="ahm-quote__band">Whiteford</span>
+            </figcaption>
+          </figure>
+
+          <figure class="ahm-quote">
+            <blockquote class="ahm-quote__text">"Hands down the best mixes we have ever had. Anton was fantastic to
+              deal with, gave us great guidance and we couldn't be happier. Highly recommended, he really brought
+              the best out in our recordings."</blockquote>
+            <figcaption>
+              <span class="ahm-quote__name">Ace</span>
+              <span class="ahm-quote__band">The Tenants</span>
+            </figcaption>
+          </figure>
+        </div>
+
+        <div class="ahm-quotes__controls">
+          <button class="ahm-quotes__arrow" id="ahmQuotePrev" aria-label="Previous testimonial">&#8249;</button>
+          <div class="ahm-quotes__dots" id="ahmQuoteDots"></div>
+          <button class="ahm-quotes__arrow" id="ahmQuoteNext" aria-label="Next testimonial">&#8250;</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="ahm-footer">
+    <a class="ahm-footer__social" href="https://www.instagram.com/antonhagopmixing/" target="_blank"
+      rel="noopener" aria-label="Anton Hagop Mixing on Instagram">
+      <img src="images/instagram.png" alt="Instagram">
+    </a>
+    <p class="ahm-footer__copy">Copyright &copy; 2024 &ndash; Anton Hagop Mixing &ndash; All Rights Reserved.</p>
+  </footer>
+
+  <!-- ============================================================
+       SCRIPTS
+       ============================================================ -->
+  <script>
+    /* ---- Header: hide on scroll-down, show on scroll-up, blur once moved ---- */
+    (function () {
+      var header = document.getElementById('ahmHeader');
+      var lastY = window.pageYOffset;
+      var ticking = false;
+      var DELTA = 6, TOP_LOCK = 84;
+
+      function onScroll() {
+        var y = window.pageYOffset;
+        header.classList.toggle('ahm-header--scrolled', y > 10);
+        if (Math.abs(y - lastY) >= DELTA) {
+          if (y > lastY && y > TOP_LOCK) {
+            header.classList.add('ahm-header--hidden');
+          } else {
+            header.classList.remove('ahm-header--hidden');
+          }
+          lastY = y;
+        }
+        ticking = false;
+      }
+      window.addEventListener('scroll', function () {
+        if (!ticking) { window.requestAnimationFrame(onScroll); ticking = true; }
+      }, { passive: true });
+    })();
+
+    /* ---- Reveal on scroll ---- */
+    (function () {
+      var els = document.querySelectorAll('.ahm-reveal');
+      if (!('IntersectionObserver' in window)) {
+        els.forEach(function (el) { el.classList.add('ahm-reveal--in'); });
+        return;
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            e.target.classList.add('ahm-reveal--in');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.2 });
+      els.forEach(function (el) { io.observe(el); });
+    })();
+
+    /* ---- Testimonials carousel ---- */
+    (function () {
+      var stage = document.getElementById('ahmQuoteStage');
+      if (!stage) return;
+      var quotes = Array.prototype.slice.call(stage.querySelectorAll('.ahm-quote'));
+      var dotsWrap = document.getElementById('ahmQuoteDots');
+      var prev = document.getElementById('ahmQuotePrev');
+      var next = document.getElementById('ahmQuoteNext');
+      var i = 0, timer = null, DELAY = 6000;
+
+      var dots = quotes.map(function (_, idx) {
+        var d = document.createElement('button');
+        d.className = 'ahm-dot' + (idx === 0 ? ' ahm-dot--active' : '');
+        d.setAttribute('aria-label', 'Testimonial ' + (idx + 1));
+        d.addEventListener('click', function () { go(idx); });
+        dotsWrap.appendChild(d);
+        return d;
+      });
+
+      function go(n) {
+        quotes[i].classList.remove('ahm-quote--active');
+        dots[i].classList.remove('ahm-dot--active');
+        i = (n + quotes.length) % quotes.length;
+        quotes[i].classList.add('ahm-quote--active');
+        dots[i].classList.add('ahm-dot--active');
+      }
+      function start() { timer = setInterval(function () { go(i + 1); }, DELAY); }
+      function reset() { clearInterval(timer); start(); }
+
+      next.addEventListener('click', function () { go(i + 1); reset(); });
+      prev.addEventListener('click', function () { go(i - 1); reset(); });
+      stage.addEventListener('mouseenter', function () { clearInterval(timer); });
+      stage.addEventListener('mouseleave', start);
+      start();
+    })();
+  </script>
+</body>
+
+</html>
