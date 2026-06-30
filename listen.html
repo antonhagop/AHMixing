@@ -517,8 +517,15 @@
       text-align: left;
     }
 
-    .ahm-accordion__head .ahm-h2 {
+    /* title matches the site's other section headings */
+    .ahm-accordion__title {
       margin: 0;
+      font-family: 'Barlow Condensed', 'Barlow', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      line-height: 1.05;
+      font-size: clamp(2rem, 4vw, 3rem);
     }
 
     .ahm-accordion__icon {
@@ -568,6 +575,43 @@
     .ahm-accordion__inner {
       padding-top: 32px;
       padding-bottom: 8px;
+    }
+
+    /* ---- letter tabs inside the Partners accordion ---- */
+    .ahm-ptabs__bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+
+    .ahm-ptabs__tab {
+      font-family: 'Barlow', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+      color: var(--ahm-muted);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--ahm-line);
+      border-radius: 4px;
+      padding: 9px 15px;
+      cursor: pointer;
+      transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .ahm-ptabs__tab:hover {
+      color: var(--ahm-text);
+      border-color: var(--ahm-blue);
+    }
+
+    .ahm-ptabs__tab.is-active {
+      color: #0A0A0A;
+      background: var(--ahm-blue);
+      border-color: var(--ahm-blue);
+    }
+
+    .ahm-ptabs__panel[hidden] {
+      display: none;
     }
 
     /* ============================================================ FOOTER ============================================================ */
@@ -807,242 +851,299 @@
       <div class="ahm-wrap ahm-reveal">
         <button class="ahm-accordion__head" id="ahmPartnersToggle" type="button" aria-expanded="false"
           aria-controls="ahmPartnersPanel">
-          <span class="ahm-h2"><span class="ahm-accent">Partners</span> in Crime</span>
+          <span class="ahm-accordion__title"><span class="ahm-accent">Partners</span> in Crime</span>
           <span class="ahm-accordion__icon" aria-hidden="true"></span>
         </button>
         <div class="ahm-accordion__panel" id="ahmPartnersPanel" role="region" aria-labelledby="ahmPartnersToggle">
           <div class="ahm-accordion__inner">
-            <ul class="ahm-partners">
-          <li>Airbag</li>
-          <li>Ambush Bug</li>
-          <li>Amplexus</li>
-          <li>Amy Vee</li>
-          <li>Anjeliina</li>
-          <li>Anna Salleh</li>
-          <li>Another Day Down</li>
-          <li>Artaxian Mantra</li>
-          <li>Bastian</li>
-          <li>Ben Gillies</li>
-          <li>Before The Wave</li>
-          <li>Big Alcatraz</li>
-          <li>Bill Hunt</li>
-          <li>Birds Of Tokyo</li>
-          <li>Blackstar</li>
-          <li>Blind Eliza</li>
-          <li>Blue Gin</li>
-          <li>Bobby Danger</li>
-          <li>Boston Shaker</li>
-          <li>Boukabou</li>
-          <li>Brand</li>
-          <li>Bronte Alva</li>
-          <li>Brooke Fraser</li>
-          <li>Brothers of Filth</li>
-          <li>Bryce Jacobs</li>
-          <li>Charlie Crook</li>
-          <li>Cherie Lucas</li>
-          <li>Chris Abrahams</li>
-          <li>Christine Anu</li>
-          <li>CJ Stranger</li>
-          <li>Clay J Gladstone</li>
-          <li>Cletis Carr</li>
-          <li>Cold Chisel</li>
-          <li>Copious Dribble</li>
-          <li>Cyrus</li>
-          <li>Dadichi Toth</li>
-          <li>Dallas</li>
-          <li>Daniel Johns</li>
-          <li>December Seven</li>
-          <li>Denim</li>
-          <li>Diesel</li>
-          <li>Dirty Skanks</li>
-          <li>Distillery</li>
-          <li>Divers</li>
-          <li>Doradus</li>
-          <li>Double on Hearts</li>
-          <li>Doug Parkinson</li>
-          <li>Doug Williams</li>
-          <li>Dreamshifter</li>
-          <li>Dropmotive</li>
-          <li>Droptank</li>
-          <li>Duncan James</li>
-          <li>Ed Kuepper</li>
-          <li>Electric State</li>
-          <li>Element</li>
-          <li>Ermintrude</li>
-          <li>Euphonic</li>
-          <li>Eye On Stone</li>
-          <li>Fell To Erin</li>
-          <li>Fifth House</li>
-          <li>Flashpot Moments</li>
-          <li>Flee The Capital</li>
-          <li>Flightless</li>
-          <li>Flowers For Jayne</li>
-          <li>Floyd Vincent</li>
-          <li>FlyByWire</li>
-          <li>Forgotten Sorrows</li>
-          <li>Francis Royale</li>
-          <li>Funky Love Tank</li>
-          <li>Fuselage</li>
-          <li>Future Primitive</li>
-          <li>Gareth Paul</li>
-          <li>Ginger</li>
-          <li>Glenn Shorrock</li>
-          <li>Goldthrone</li>
-          <li>Guns For Glory</li>
-          <li>Hansel</li>
-          <li>Happenstance</li>
-          <li>Helical</li>
-          <li>Hi-Fi Reactor</li>
-          <li>High Tropics</li>
-          <li>Hoodoo Gurus</li>
-          <li>Hugh Jackman</li>
-          <li>Human Nature</li>
-          <li>Hyperlilly</li>
-          <li>Increment</li>
-          <li>Injettison</li>
-          <li>Innertone</li>
-          <li>Jack Jones</li>
-          <li>Jada Pinkett-Smith</li>
-          <li>Jake Clyne</li>
-          <li>Jamel Boukabou</li>
-          <li>Jay Smith</li>
-          <li>Jettison</li>
-          <li>Jim Barbour</li>
-          <li>Jimmy Barnes</li>
-          <li>Jodi Martin</li>
-          <li>Jon Ann</li>
-          <li>Jordan Millar</li>
-          <li>Jonah Primo</li>
-          <li>Jonathan Armstrong</li>
-          <li>Kailey Pallas</li>
-          <li>Karl Morgan</li>
-          <li>Ken Jewell</li>
-          <li>Killing Flaw</li>
-          <li>Kizmet</li>
-          <li>Koh Llanta</li>
-          <li>Lancaster Sound</li>
-          <li>Land Speed Record</li>
-          <li>Larsen</li>
-          <li>Last Embers</li>
-          <li>Late Night Lies</li>
-          <li>Lee Kernaghan</li>
-          <li>Left At The Avenue</li>
-          <li>Loser</li>
-          <li>Louder</li>
-          <li>Luna Assassins</li>
-          <li>Luxury</li>
-          <li>Marcia Hines</li>
-          <li>Mark O&rsquo;Shea</li>
-          <li>Mark Owen Scott</li>
-          <li>Marrow Lane</li>
-          <li>Michael Theodoridis</li>
-          <li>Midnight Oil</li>
-          <li>Missy Higgins</li>
-          <li>Mitchell Shadlow</li>
-          <li>Morganics</li>
-          <li>Mr Brown</li>
-          <li>My Friend Benny</li>
-          <li>My Kind Of Chaos</li>
-          <li>Natalie Imbruglia</li>
-          <li>Nathan Cavaleri</li>
-          <li>Neil Avery</li>
-          <li>Neon Bones</li>
-          <li>Neverworld</li>
-          <li>New Trends</li>
-          <li>Nixin</li>
-          <li>Nocturnal Animals</li>
-          <li>Oligarch</li>
-          <li>Pale Riders</li>
-          <li>Patriarch</li>
-          <li>paulmac</li>
-          <li>Paul Winn</li>
-          <li>Peter Gelling</li>
-          <li>Phil Jamieson</li>
-          <li>Phonograph</li>
-          <li>Porcelain Grace</li>
-          <li>Powderfinger</li>
-          <li>Press Club</li>
-          <li>Primary</li>
-          <li>Ragdoll</li>
-          <li>Redline</li>
-          <li>Reflector</li>
-          <li>Reuben Morgan</li>
-          <li>Richard Madden</li>
-          <li>Roll-On Effect</li>
-          <li>Ryan Thomas</li>
-          <li>Sally-Anne Whitten</li>
-          <li>Samahdi</li>
-          <li>Sam McNally</li>
-          <li>Sanny Veloo</li>
-          <li>Sarah Carnegie</li>
-          <li>Sarah McLoud</li>
-          <li>Sarah McGregor</li>
-          <li>Sara Storer</li>
-          <li>Self Is A Seed</li>
-          <li>Sex Dolls</li>
-          <li>Sick Puppies</li>
-          <li>silverchair</li>
-          <li>Sir Veto</li>
-          <li>Skyes Law</li>
-          <li>Skyway</li>
-          <li>Slimey Things</li>
-          <li>Something Urban</li>
-          <li>Sonorcast</li>
-          <li>Soulphase</li>
-          <li>Soul Train</li>
-          <li>Spinifex</li>
-          <li>Steve Facey</li>
-          <li>Street Legal</li>
-          <li>Sunday Sun</li>
-          <li>Sunroom</li>
-          <li>Switch 3</li>
-          <li>Terrace House</li>
-          <li>The Casanovas</li>
-          <li>The Cry</li>
-          <li>The Dagwood Dogs</li>
-          <li>The Devoted Few</li>
-          <li>The Dirty Sweet</li>
-          <li>The Dissociatives</li>
-          <li>The Funny Jims</li>
-          <li>The Golden Age</li>
-          <li>The Hanging Tree</li>
-          <li>The Hard Aches</li>
-          <li>The Last Minute</li>
-          <li>The Live Room</li>
-          <li>The Monaco</li>
-          <li>The Necks</li>
-          <li>The Oceans</li>
-          <li>The Radiators</li>
-          <li>The Shots</li>
-          <li>The Sleepyheads</li>
-          <li>The Smith Street Band</li>
-          <li>The Spencer Project</li>
-          <li>The SunBears</li>
-          <li>The Superjesus</li>
-          <li>The Terrys</li>
-          <li>The Toothpicks</li>
-          <li>The Urban Sea</li>
-          <li>The Whitlams</li>
-          <li>The Wildfires</li>
-          <li>Thirsty Merc</li>
-          <li>Torch Le Monde</li>
-          <li>TJ Eckelberg</li>
-          <li>Trouser</li>
-          <li>Tyler&rsquo;s Riot</li>
-          <li>Upbeat Ambassadors</li>
-          <li>Using Three Words</li>
-          <li>Vegas Baby</li>
-          <li>Velvet Cross</li>
-          <li>Vipersnatch</li>
-          <li>Waikiki</li>
-          <li>Waiter</li>
-          <li>White Bonsai</li>
-          <li>Will Smith</li>
-          <li>Winter Starlings</li>
-          <li>World&rsquo;s Collide</li>
-          <li>Yolanda and the Stolen Boys</li>
-          <li>Yeska</li>
-            </ul>
+            <div class="ahm-ptabs">
+              <div class="ahm-ptabs__bar" role="tablist" aria-label="Partners by letter">
+                <button class="ahm-ptabs__tab is-active" type="button" role="tab" id="ptab-0" aria-controls="ppanel-0" aria-selected="true">A-B</button>
+                <button class="ahm-ptabs__tab" type="button" role="tab" id="ptab-1" aria-controls="ppanel-1" aria-selected="false">C-D</button>
+                <button class="ahm-ptabs__tab" type="button" role="tab" id="ptab-2" aria-controls="ppanel-2" aria-selected="false">E-F</button>
+                <button class="ahm-ptabs__tab" type="button" role="tab" id="ptab-3" aria-controls="ppanel-3" aria-selected="false">G-H</button>
+                <button class="ahm-ptabs__tab" type="button" role="tab" id="ptab-4" aria-controls="ppanel-4" aria-selected="false">I-J</button>
+                <button class="ahm-ptabs__tab" type="button" role="tab" id="ptab-5" aria-controls="ppanel-5" aria-selected="false">K-L</button>
+                <button class="ahm-ptabs__tab" type="button" role="tab" id="ptab-6" aria-controls="ppanel-6" aria-selected="false">M-N</button>
+                <button class="ahm-ptabs__tab" type="button" role="tab" id="ptab-7" aria-controls="ppanel-7" aria-selected="false">O-P</button>
+                <button class="ahm-ptabs__tab" type="button" role="tab" id="ptab-8" aria-controls="ppanel-8" aria-selected="false">Q-R-S</button>
+                <button class="ahm-ptabs__tab" type="button" role="tab" id="ptab-9" aria-controls="ppanel-9" aria-selected="false">T</button>
+                <button class="ahm-ptabs__tab" type="button" role="tab" id="ptab-10" aria-controls="ppanel-10" aria-selected="false">U-Z</button>
+              </div>
+              <div class="ahm-ptabs__panel is-active" id="ppanel-0" role="tabpanel" aria-labelledby="ptab-0">
+                <ul class="ahm-partners">
+                  <li>Airbag</li>
+                  <li>Ambush Bug</li>
+                  <li>Amplexus</li>
+                  <li>Amy Vee</li>
+                  <li>Anjeliina</li>
+                  <li>Anna Salleh</li>
+                  <li>Another Day Down</li>
+                  <li>Artaxian Mantra</li>
+                  <li>Bastian</li>
+                  <li>Ben Gillies</li>
+                  <li>Before The Wave</li>
+                  <li>Big Alcatraz</li>
+                  <li>Bill Hunt</li>
+                  <li>Birds Of Tokyo</li>
+                  <li>Blackstar</li>
+                  <li>Blind Eliza</li>
+                  <li>Blue Gin</li>
+                  <li>Bobby Danger</li>
+                  <li>Boston Shaker</li>
+                  <li>Boukabou</li>
+                  <li>Brand</li>
+                  <li>Bronte Alva</li>
+                  <li>Brooke Fraser</li>
+                  <li>Brothers of Filth</li>
+                  <li>Bryce Jacobs</li>
+                </ul>
+              </div>
+              <div class="ahm-ptabs__panel" id="ppanel-1" role="tabpanel" aria-labelledby="ptab-1" hidden>
+                <ul class="ahm-partners">
+                  <li>Charlie Crook</li>
+                  <li>Cherie Lucas</li>
+                  <li>Chris Abrahams</li>
+                  <li>Christine Anu</li>
+                  <li>CJ Stranger</li>
+                  <li>Clay J Gladstone</li>
+                  <li>Cletis Carr</li>
+                  <li>Cold Chisel</li>
+                  <li>Copious Dribble</li>
+                  <li>Cyrus</li>
+                  <li>Dadichi Toth</li>
+                  <li>Dallas</li>
+                  <li>Daniel Johns</li>
+                  <li>December Seven</li>
+                  <li>Denim</li>
+                  <li>Diesel</li>
+                  <li>Dirty Skanks</li>
+                  <li>Distillery</li>
+                  <li>Divers</li>
+                  <li>Doradus</li>
+                  <li>Double on Hearts</li>
+                  <li>Doug Parkinson</li>
+                  <li>Doug Williams</li>
+                  <li>Dreamshifter</li>
+                  <li>Dropmotive</li>
+                  <li>Droptank</li>
+                  <li>Duncan James</li>
+                </ul>
+              </div>
+              <div class="ahm-ptabs__panel" id="ppanel-2" role="tabpanel" aria-labelledby="ptab-2" hidden>
+                <ul class="ahm-partners">
+                  <li>Ed Kuepper</li>
+                  <li>Electric State</li>
+                  <li>Element</li>
+                  <li>Ermintrude</li>
+                  <li>Euphonic</li>
+                  <li>Eye On Stone</li>
+                  <li>Fell To Erin</li>
+                  <li>Fifth House</li>
+                  <li>Flashpot Moments</li>
+                  <li>Flee The Capital</li>
+                  <li>Flightless</li>
+                  <li>Flowers For Jayne</li>
+                  <li>Floyd Vincent</li>
+                  <li>FlyByWire</li>
+                  <li>Forgotten Sorrows</li>
+                  <li>Francis Royale</li>
+                  <li>Funky Love Tank</li>
+                  <li>Fuselage</li>
+                  <li>Future Primitive</li>
+                </ul>
+              </div>
+              <div class="ahm-ptabs__panel" id="ppanel-3" role="tabpanel" aria-labelledby="ptab-3" hidden>
+                <ul class="ahm-partners">
+                  <li>Gareth Paul</li>
+                  <li>Ginger</li>
+                  <li>Glenn Shorrock</li>
+                  <li>Goldthrone</li>
+                  <li>Guns For Glory</li>
+                  <li>Hansel</li>
+                  <li>Happenstance</li>
+                  <li>Helical</li>
+                  <li>Hi-Fi Reactor</li>
+                  <li>High Tropics</li>
+                  <li>Hoodoo Gurus</li>
+                  <li>Hugh Jackman</li>
+                  <li>Human Nature</li>
+                  <li>Hyperlilly</li>
+                </ul>
+              </div>
+              <div class="ahm-ptabs__panel" id="ppanel-4" role="tabpanel" aria-labelledby="ptab-4" hidden>
+                <ul class="ahm-partners">
+                  <li>Increment</li>
+                  <li>Injettison</li>
+                  <li>Innertone</li>
+                  <li>Jack Jones</li>
+                  <li>Jada Pinkett-Smith</li>
+                  <li>Jake Clyne</li>
+                  <li>Jamel Boukabou</li>
+                  <li>Jay Smith</li>
+                  <li>Jettison</li>
+                  <li>Jim Barbour</li>
+                  <li>Jimmy Barnes</li>
+                  <li>Jodi Martin</li>
+                  <li>Jon Ann</li>
+                  <li>Jordan Millar</li>
+                  <li>Jonah Primo</li>
+                  <li>Jonathan Armstrong</li>
+                </ul>
+              </div>
+              <div class="ahm-ptabs__panel" id="ppanel-5" role="tabpanel" aria-labelledby="ptab-5" hidden>
+                <ul class="ahm-partners">
+                  <li>Kailey Pallas</li>
+                  <li>Karl Morgan</li>
+                  <li>Ken Jewell</li>
+                  <li>Killing Flaw</li>
+                  <li>Kizmet</li>
+                  <li>Koh Llanta</li>
+                  <li>Lancaster Sound</li>
+                  <li>Land Speed Record</li>
+                  <li>Larsen</li>
+                  <li>Last Embers</li>
+                  <li>Late Night Lies</li>
+                  <li>Lee Kernaghan</li>
+                  <li>Left At The Avenue</li>
+                  <li>Loser</li>
+                  <li>Louder</li>
+                  <li>Luna Assassins</li>
+                  <li>Luxury</li>
+                </ul>
+              </div>
+              <div class="ahm-ptabs__panel" id="ppanel-6" role="tabpanel" aria-labelledby="ptab-6" hidden>
+                <ul class="ahm-partners">
+                  <li>Marcia Hines</li>
+                  <li>Mark O&rsquo;Shea</li>
+                  <li>Mark Owen Scott</li>
+                  <li>Marrow Lane</li>
+                  <li>Michael Theodoridis</li>
+                  <li>Midnight Oil</li>
+                  <li>Missy Higgins</li>
+                  <li>Mitchell Shadlow</li>
+                  <li>Morganics</li>
+                  <li>Mr Brown</li>
+                  <li>My Friend Benny</li>
+                  <li>My Kind Of Chaos</li>
+                  <li>Natalie Imbruglia</li>
+                  <li>Nathan Cavaleri</li>
+                  <li>Neil Avery</li>
+                  <li>Neon Bones</li>
+                  <li>Neverworld</li>
+                  <li>New Trends</li>
+                  <li>Nixin</li>
+                  <li>Nocturnal Animals</li>
+                </ul>
+              </div>
+              <div class="ahm-ptabs__panel" id="ppanel-7" role="tabpanel" aria-labelledby="ptab-7" hidden>
+                <ul class="ahm-partners">
+                  <li>Oligarch</li>
+                  <li>Pale Riders</li>
+                  <li>Patriarch</li>
+                  <li>paulmac</li>
+                  <li>Paul Winn</li>
+                  <li>Peter Gelling</li>
+                  <li>Phil Jamieson</li>
+                  <li>Phonograph</li>
+                  <li>Porcelain Grace</li>
+                  <li>Powderfinger</li>
+                  <li>Press Club</li>
+                  <li>Primary</li>
+                </ul>
+              </div>
+              <div class="ahm-ptabs__panel" id="ppanel-8" role="tabpanel" aria-labelledby="ptab-8" hidden>
+                <ul class="ahm-partners">
+                  <li>Ragdoll</li>
+                  <li>Redline</li>
+                  <li>Reflector</li>
+                  <li>Reuben Morgan</li>
+                  <li>Richard Madden</li>
+                  <li>Roll-On Effect</li>
+                  <li>Ryan Thomas</li>
+                  <li>Sally-Anne Whitten</li>
+                  <li>Samahdi</li>
+                  <li>Sam McNally</li>
+                  <li>Sanny Veloo</li>
+                  <li>Sarah Carnegie</li>
+                  <li>Sarah McLoud</li>
+                  <li>Sarah McGregor</li>
+                  <li>Sara Storer</li>
+                  <li>Self Is A Seed</li>
+                  <li>Sex Dolls</li>
+                  <li>Sick Puppies</li>
+                  <li>silverchair</li>
+                  <li>Sir Veto</li>
+                  <li>Skyes Law</li>
+                  <li>Skyway</li>
+                  <li>Slimey Things</li>
+                  <li>Something Urban</li>
+                  <li>Sonorcast</li>
+                  <li>Soulphase</li>
+                  <li>Soul Train</li>
+                  <li>Spinifex</li>
+                  <li>Steve Facey</li>
+                  <li>Street Legal</li>
+                  <li>Sunday Sun</li>
+                  <li>Sunroom</li>
+                  <li>Switch 3</li>
+                </ul>
+              </div>
+              <div class="ahm-ptabs__panel" id="ppanel-9" role="tabpanel" aria-labelledby="ptab-9" hidden>
+                <ul class="ahm-partners">
+                  <li>Terrace House</li>
+                  <li>The Casanovas</li>
+                  <li>The Cry</li>
+                  <li>The Dagwood Dogs</li>
+                  <li>The Devoted Few</li>
+                  <li>The Dirty Sweet</li>
+                  <li>The Dissociatives</li>
+                  <li>The Funny Jims</li>
+                  <li>The Golden Age</li>
+                  <li>The Hanging Tree</li>
+                  <li>The Hard Aches</li>
+                  <li>The Last Minute</li>
+                  <li>The Live Room</li>
+                  <li>The Monaco</li>
+                  <li>The Necks</li>
+                  <li>The Oceans</li>
+                  <li>The Radiators</li>
+                  <li>The Shots</li>
+                  <li>The Sleepyheads</li>
+                  <li>The Smith Street Band</li>
+                  <li>The Spencer Project</li>
+                  <li>The SunBears</li>
+                  <li>The Superjesus</li>
+                  <li>The Terrys</li>
+                  <li>The Toothpicks</li>
+                  <li>The Urban Sea</li>
+                  <li>The Whitlams</li>
+                  <li>The Wildfires</li>
+                  <li>Thirsty Merc</li>
+                  <li>Torch Le Monde</li>
+                  <li>TJ Eckelberg</li>
+                  <li>Trouser</li>
+                  <li>Tyler&rsquo;s Riot</li>
+                </ul>
+              </div>
+              <div class="ahm-ptabs__panel" id="ppanel-10" role="tabpanel" aria-labelledby="ptab-10" hidden>
+                <ul class="ahm-partners">
+                  <li>Upbeat Ambassadors</li>
+                  <li>Using Three Words</li>
+                  <li>Vegas Baby</li>
+                  <li>Velvet Cross</li>
+                  <li>Vipersnatch</li>
+                  <li>Waikiki</li>
+                  <li>Waiter</li>
+                  <li>White Bonsai</li>
+                  <li>Will Smith</li>
+                  <li>Winter Starlings</li>
+                  <li>World&rsquo;s Collide</li>
+                  <li>Yolanda and the Stolen Boys</li>
+                  <li>Yeska</li>
+                </ul>
+              </div>
+            </div>
             <p class="ahm-partners__note">Currently seeking artists starting with Q and X.</p>
           </div>
         </div>
@@ -1105,21 +1206,39 @@
       });
     })();
 
-    /* ---- Partners in Crime: accordion toggle ---- */
+    /* ---- Partners in Crime: accordion toggle + letter tabs ---- */
     (function () {
       var btn = document.getElementById('ahmPartnersToggle');
       var panel = document.getElementById('ahmPartnersPanel');
       if (!btn || !panel) return;
+
+      function fit() {
+        if (btn.getAttribute('aria-expanded') === 'true') {
+          panel.style.maxHeight = panel.scrollHeight + 'px';
+        }
+      }
+
       btn.addEventListener('click', function () {
         var open = btn.getAttribute('aria-expanded') === 'true';
         btn.setAttribute('aria-expanded', String(!open));
         panel.style.maxHeight = open ? '0px' : (panel.scrollHeight + 'px');
       });
-      window.addEventListener('resize', function () {
-        if (btn.getAttribute('aria-expanded') === 'true') {
-          panel.style.maxHeight = panel.scrollHeight + 'px';
-        }
+
+      var tabs = Array.prototype.slice.call(panel.querySelectorAll('.ahm-ptabs__tab'));
+      tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          tabs.forEach(function (t) {
+            var on = t === tab;
+            t.classList.toggle('is-active', on);
+            t.setAttribute('aria-selected', String(on));
+            var p = document.getElementById(t.getAttribute('aria-controls'));
+            if (p) { p.hidden = !on; p.classList.toggle('is-active', on); }
+          });
+          fit();   // the selected letter group has a different height
+        });
       });
+
+      window.addEventListener('resize', fit);
     })();
   </script>
 

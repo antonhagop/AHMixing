@@ -227,13 +227,20 @@
       padding: 120px 24px 80px;
     }
 
+    /* studio poster: sits ABOVE the video and only fades away once YouTube is
+       actually playing, so the player's load-time controls never show. */
     .ahm-hero__bg {
       position: absolute;
       inset: 0;
       background: url('images/hero-studio.png') center/cover no-repeat;
       filter: brightness(0.4) saturate(0.9);
       transform: scale(1.05);
-      z-index: 0;
+      z-index: 1;
+      transition: opacity 0.8s ease;
+    }
+
+    .ahm-hero__bg.is-hidden {
+      opacity: 0;
     }
 
     /* looping YouTube background video, scaled to fully cover the hero.
@@ -384,6 +391,8 @@
     .ahm-quote__avatar {
       width: 136px;
       height: 136px;
+      flex: 0 0 auto;
+      /* never let the flex column squish it into an oval */
       border-radius: 50%;
       object-fit: cover;
       /* even padding above and below the pic, consistent across all slides */
@@ -459,6 +468,11 @@
     .ahm-dot--active {
       background: var(--ahm-blue);
       transform: scale(1.25);
+    }
+
+    /* mobile-only arrows flanking the testimonial photo (shown in the media query) */
+    .ahm-quotes__side {
+      display: none;
     }
 
     /* ============================================================
@@ -907,7 +921,50 @@
 
       /* more breathing room below the Mixing / Listen buttons when stacked */
       .ahm-split__text .ahm-btn {
-        margin-bottom: 26px;
+        margin-bottom: 46px;
+      }
+
+      /* testimonials: drop the bottom dots/arrows; use side arrows + swipe */
+      .ahm-quotes__controls {
+        display: none;
+      }
+
+      .ahm-quotes__stage {
+        margin-top: 12px;
+        min-height: 470px;
+      }
+
+      .ahm-quote__avatar {
+        margin-bottom: 34px;
+      }
+
+      .ahm-quotes__side {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 84px;
+        /* avatar vertical centre (16px margin + 136/2) */
+        transform: translateY(-50%);
+        width: 46px;
+        height: 46px;
+        padding: 0;
+        border-radius: 50%;
+        border: 1px solid var(--ahm-line);
+        background: rgba(10, 10, 10, 0.45);
+        color: var(--ahm-text);
+        font-size: 1.5rem;
+        line-height: 1;
+        cursor: pointer;
+        z-index: 5;
+      }
+
+      .ahm-quotes__side--prev {
+        left: 0;
+      }
+
+      .ahm-quotes__side--next {
+        right: 0;
       }
 
       .ahm-albums__row {
@@ -957,8 +1014,13 @@
       }
 
       .ahm-hero__logo {
-        width: 94px;
-        margin-bottom: 30px;
+        width: 132px;
+        margin-bottom: 32px;
+      }
+
+      /* nudge the hero block up a bit on phones */
+      .ahm-hero__inner {
+        transform: translateY(-5vh);
       }
 
       .ahm-crucial__quote {
@@ -1053,6 +1115,10 @@
         <h2 class="ahm-h2">Testimonials</h2>
 
         <div class="ahm-quotes__stage" id="ahmQuoteStage">
+          <button class="ahm-quotes__side ahm-quotes__side--prev" id="ahmQuoteSidePrev" type="button"
+            aria-label="Previous testimonial">&#8249;</button>
+          <button class="ahm-quotes__side ahm-quotes__side--next" id="ahmQuoteSideNext" type="button"
+            aria-label="Next testimonial">&#8250;</button>
           <figure class="ahm-quote ahm-quote--active">
             <img class="ahm-quote__avatar" src="images/testimonial-ben-gillies.jpg" alt="Ben Gillies">
             <blockquote class="ahm-quote__text">"I call Anton when I want a studio session to run like clockwork,
@@ -1294,15 +1360,47 @@
        ============================================================ -->
   <script>
     /* ---- Hero video: load the mobile clip on small screens, desktop clip otherwise.
-            Chromeless background params (controls=0) so no transport UI shows. ---- */
+            The studio poster covers the player until it's actually PLAYING, so the
+            YouTube load-time controls in the centre never show. ---- */
     (function () {
       var f = document.getElementById('ahmHeroVideo');
       if (!f) return;
+      var poster = document.querySelector('.ahm-hero__bg');
       var isMobile = window.matchMedia('(max-width: 820px)').matches;
       var id = isMobile ? f.getAttribute('data-yt-mobile') : f.getAttribute('data-yt-desktop');
       var params = 'autoplay=1&mute=1&controls=0&loop=1&playlist=' + id +
-        '&playsinline=1&rel=0&modestbranding=1&disablekb=1&fs=0&iv_load_policy=3';
+        '&playsinline=1&rel=0&modestbranding=1&disablekb=1&fs=0&iv_load_policy=3' +
+        '&enablejsapi=1&origin=' + encodeURIComponent(location.origin);
       f.src = 'https://www.youtube.com/embed/' + id + '?' + params;
+
+      function revealWhenPlaying() {
+        /* eslint-disable no-new */
+        new YT.Player('ahmHeroVideo', {
+          events: {
+            onStateChange: function (e) {
+              if (e.data === YT.PlayerState.PLAYING && poster) {
+                poster.classList.add('is-hidden');
+              }
+            }
+          }
+        });
+      }
+
+      if (window.YT && window.YT.Player) {
+        revealWhenPlaying();
+      } else {
+        var prev = window.onYouTubeIframeAPIReady;
+        window.onYouTubeIframeAPIReady = function () {
+          if (typeof prev === 'function') prev();
+          revealWhenPlaying();
+        };
+        if (!document.getElementById('ahm-yt-api')) {
+          var s = document.createElement('script');
+          s.id = 'ahm-yt-api';
+          s.src = 'https://www.youtube.com/iframe_api';
+          document.head.appendChild(s);
+        }
+      }
     })();
 
     /* ---- Header: hide on scroll-down, show on scroll-up, blur once moved ---- */
@@ -1356,6 +1454,8 @@
       var dotsWrap = document.getElementById('ahmQuoteDots');
       var prev = document.getElementById('ahmQuotePrev');
       var next = document.getElementById('ahmQuoteNext');
+      var sidePrev = document.getElementById('ahmQuoteSidePrev');
+      var sideNext = document.getElementById('ahmQuoteSideNext');
       var i = 0, timer = null, DELAY = 6000;
 
       var dots = quotes.map(function (_, idx) {
@@ -1379,6 +1479,24 @@
 
       next.addEventListener('click', function () { go(i + 1); reset(); });
       prev.addEventListener('click', function () { go(i - 1); reset(); });
+      if (sideNext) sideNext.addEventListener('click', function () { go(i + 1); reset(); });
+      if (sidePrev) sidePrev.addEventListener('click', function () { go(i - 1); reset(); });
+
+      /* swipe (mobile) */
+      var tStartX = 0, tStartY = 0;
+      stage.addEventListener('touchstart', function (e) {
+        tStartX = e.changedTouches[0].clientX;
+        tStartY = e.changedTouches[0].clientY;
+      }, { passive: true });
+      stage.addEventListener('touchend', function (e) {
+        var dx = e.changedTouches[0].clientX - tStartX;
+        var dy = e.changedTouches[0].clientY - tStartY;
+        if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+          go(dx < 0 ? i + 1 : i - 1);
+          reset();
+        }
+      }, { passive: true });
+
       stage.addEventListener('mouseenter', function () { clearInterval(timer); });
       stage.addEventListener('mouseleave', start);
       start();
