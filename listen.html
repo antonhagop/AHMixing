@@ -298,6 +298,50 @@
       border: 0;
     }
 
+    /* YouTube facade: poster + play button, loads the real player on click
+       (matches the old site's lazy-load; some label uploads block bare iframes) */
+    .ahm-yt {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      padding: 0;
+      cursor: pointer;
+      background-color: #000;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    .ahm-yt::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.12);
+      transition: background 0.25s ease;
+    }
+
+    .ahm-yt:hover::before {
+      background: rgba(0, 0, 0, 0.3);
+    }
+
+    .ahm-yt::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 68px;
+      height: 68px;
+      background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='47' fill='rgba(10,10,10,0.6)' stroke='%23ffffff' stroke-width='3'/><path d='M41 31 L71 50 L41 69 Z' fill='%23ffffff'/></svg>") center / contain no-repeat;
+      transition: transform 0.25s ease;
+    }
+
+    .ahm-yt:hover::after {
+      transform: translate(-50%, -50%) scale(1.08);
+    }
+
     /* ============================================================ CREDITS LIST ============================================================ */
     .ahm-credits {
       list-style: none;
@@ -363,7 +407,7 @@
     }
 
     .ahm-favs__cap strong {
-      font-weight: 600;
+      font-weight: 400;
       font-style: italic;
     }
 
@@ -399,10 +443,12 @@
 
     @media (max-width: 820px) {
 
-      /* drop the pin: static banner, then favourites below */
+      /* drop the pin: show the WHOLE image at full width (no cropped edges).
+         aspect-ratio matches the file (1891x1063) so cover fills with no crop. */
       .ahm-pinimg__media {
         position: relative;
-        height: 56vh;
+        height: auto;
+        aspect-ratio: 1891 / 1063;
       }
 
       .ahm-pinimg__cover {
@@ -454,10 +500,80 @@
       font-size: 1.2rem;
     }
 
+    /* ---- accordion (Partners in Crime) ---- */
+    .ahm-accordion__head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      width: 100%;
+      padding: 26px 0;
+      background: none;
+      border: 0;
+      border-top: 1px solid var(--ahm-line);
+      border-bottom: 1px solid var(--ahm-line);
+      color: var(--ahm-text);
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .ahm-accordion__head .ahm-h2 {
+      margin: 0;
+    }
+
+    .ahm-accordion__icon {
+      position: relative;
+      flex: 0 0 auto;
+      width: 24px;
+      height: 24px;
+    }
+
+    .ahm-accordion__icon::before,
+    .ahm-accordion__icon::after {
+      content: '';
+      position: absolute;
+      background: var(--ahm-blue);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    /* horizontal bar */
+    .ahm-accordion__icon::before {
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      transform: translateY(-50%);
+    }
+
+    /* vertical bar (hidden when open -> plus becomes minus) */
+    .ahm-accordion__icon::after {
+      left: 50%;
+      top: 0;
+      width: 2px;
+      height: 100%;
+      transform: translateX(-50%);
+    }
+
+    .ahm-accordion__head[aria-expanded="true"] .ahm-accordion__icon::after {
+      transform: translateX(-50%) scaleY(0);
+      opacity: 0;
+    }
+
+    .ahm-accordion__panel {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease;
+    }
+
+    .ahm-accordion__inner {
+      padding-top: 32px;
+      padding-bottom: 8px;
+    }
+
     /* ============================================================ FOOTER ============================================================ */
     .ahm-footer {
       text-align: center;
-      padding: 40px 24px 8px;
+      padding: 8px 24px;
     }
 
     .ahm-footer__copy {
@@ -503,16 +619,49 @@
         grid-template-columns: 1fr;
       }
 
+      /* favourites: 2-up on tablet/phone-landscape, 1-up on narrow phones (below) */
       .ahm-favs__grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      /* the tall playlists are way too big stacked on a phone */
+      .ahm-spotify iframe {
+        height: 460px;
+      }
+
+      /* hide the long Partners in Crime list on mobile */
+      .ahm-partners-section {
+        display: none;
+      }
+
+      .ahm-results {
+        padding-top: 116px;
+        padding-bottom: 100px;
       }
 
       .ahm-nav {
-        gap: 20px;
+        gap: 38px;
       }
 
       .ahm-nav__link {
-        font-size: 0.8rem;
+        font-size: 1.25rem;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .ahm-favs__grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .ahm-nav {
+        gap: 26px;
+        padding: 0 14px 0 18px;
+      }
+
+      .ahm-nav__link {
+        font-size: 1.12rem;
       }
     }
   </style>
@@ -526,8 +675,8 @@
       <a href="index.html" class="ahm-nav__link">Home</a>
       <a href="listen.html" class="ahm-nav__link ahm-nav__link--active" aria-current="page">Listen</a>
       <a href="contact.html" class="ahm-nav__link">Contact</a>
-      <a href="https://www.instagram.com/antonhagopmixing/" target="_blank" rel="noopener"
-        class="ahm-nav__ig" aria-label="Anton Hagop Mixing on Instagram">
+      <a href="https://www.instagram.com/antonhagopmixing/" target="_blank" rel="noopener" class="ahm-nav__ig"
+        aria-label="Anton Hagop Mixing on Instagram">
         <img src="images/instagram.png" alt="Instagram">
       </a>
     </nav>
@@ -572,34 +721,30 @@
                     class="ahm-favs__tag">(E)</span></figcaption>
               </figure>
               <figure class="ahm-favs__item">
-                <div class="ahm-embed"><iframe src="https://www.youtube.com/embed/ImLof1L-Vj8"
-                    title="Missy Higgins - The Special Two"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen loading="lazy"></iframe></div>
+                <div class="ahm-embed"><button class="ahm-yt" type="button" data-yt="ImLof1L-Vj8"
+                    aria-label="Play: Missy Higgins - The Special Two"
+                    style="background-image:url('https://i.ytimg.com/vi/ImLof1L-Vj8/hqdefault.jpg')"></button></div>
                 <figcaption class="ahm-favs__cap"><strong>Missy Higgins</strong> &ndash; debut EP <span
                     class="ahm-favs__tag">(M)</span></figcaption>
               </figure>
               <figure class="ahm-favs__item">
-                <div class="ahm-embed"><iframe src="https://www.youtube.com/embed/fZeuWoIBuo8"
-                    title="Powderfinger - (Baby I've Got You) On My Mind"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen loading="lazy"></iframe></div>
+                <div class="ahm-embed"><button class="ahm-yt" type="button" data-yt="fZeuWoIBuo8"
+                    aria-label="Play: Powderfinger - (Baby I've Got You) On My Mind"
+                    style="background-image:url('https://i.ytimg.com/vi/fZeuWoIBuo8/hqdefault.jpg')"></button></div>
                 <figcaption class="ahm-favs__cap"><strong>Powderfinger</strong> &ndash; Vulture Street album <span
                     class="ahm-favs__tag">(E, addntl)</span></figcaption>
               </figure>
               <figure class="ahm-favs__item">
-                <div class="ahm-embed"><iframe src="https://www.youtube.com/embed/wJS-Eh8X6q4"
-                    title="The Dissociatives - Somewhere Down the Barrel"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen loading="lazy"></iframe></div>
+                <div class="ahm-embed"><button class="ahm-yt" type="button" data-yt="wJS-Eh8X6q4"
+                    aria-label="Play: The Dissociatives - Somewhere Down the Barrel"
+                    style="background-image:url('https://i.ytimg.com/vi/wJS-Eh8X6q4/hqdefault.jpg')"></button></div>
                 <figcaption class="ahm-favs__cap"><strong>The Dissociatives</strong> &ndash; album <span
                     class="ahm-favs__tag">(E)</span></figcaption>
               </figure>
               <figure class="ahm-favs__item">
-                <div class="ahm-embed"><iframe src="https://www.youtube.com/embed/X2FL-L9ihdo"
-                    title="The Smith Street Band - I Don't Wanna Die Anymore"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen loading="lazy"></iframe></div>
+                <div class="ahm-embed"><button class="ahm-yt" type="button" data-yt="X2FL-L9ihdo"
+                    aria-label="Play: The Smith Street Band - I Don't Wanna Die Anymore"
+                    style="background-image:url('https://i.ytimg.com/vi/X2FL-L9ihdo/hqdefault.jpg')"></button></div>
                 <figcaption class="ahm-favs__cap"><strong>The Smith Street Band</strong> &ndash; Life After Football
                   album <span class="ahm-favs__tag">(M)</span></figcaption>
               </figure>
@@ -612,26 +757,23 @@
                     class="ahm-favs__tag">(M)</span></figcaption>
               </figure>
               <figure class="ahm-favs__item">
-                <div class="ahm-embed"><iframe src="https://www.youtube.com/embed/hsp-1Mg2-7Y"
-                    title="Press Club - No Pressure"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen loading="lazy"></iframe></div>
+                <div class="ahm-embed"><button class="ahm-yt" type="button" data-yt="hsp-1Mg2-7Y"
+                    aria-label="Play: Press Club - No Pressure"
+                    style="background-image:url('https://i.ytimg.com/vi/hsp-1Mg2-7Y/hqdefault.jpg')"></button></div>
                 <figcaption class="ahm-favs__cap"><strong>Press Club</strong> &ndash; No Pressure <span
                     class="ahm-favs__tag">(M)</span></figcaption>
               </figure>
               <figure class="ahm-favs__item">
-                <div class="ahm-embed"><iframe src="https://www.youtube.com/embed/jqGDfwP-oek"
-                    title="The Terrys - Waiting For You"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen loading="lazy"></iframe></div>
+                <div class="ahm-embed"><button class="ahm-yt" type="button" data-yt="jqGDfwP-oek"
+                    aria-label="Play: The Terrys - Waiting For You"
+                    style="background-image:url('https://i.ytimg.com/vi/jqGDfwP-oek/hqdefault.jpg')"></button></div>
                 <figcaption class="ahm-favs__cap"><strong>The Terrys</strong> &ndash; True Colour album <span
                     class="ahm-favs__tag">(M)</span></figcaption>
               </figure>
               <figure class="ahm-favs__item">
-                <div class="ahm-embed"><iframe src="https://www.youtube.com/embed/rH4uTCKGB8w"
-                    title="Natalie Imbruglia - Satisfied"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen loading="lazy"></iframe></div>
+                <div class="ahm-embed"><button class="ahm-yt" type="button" data-yt="rH4uTCKGB8w"
+                    aria-label="Play: Natalie Imbruglia - Satisfied"
+                    style="background-image:url('https://i.ytimg.com/vi/rH4uTCKGB8w/hqdefault.jpg')"></button></div>
                 <figcaption class="ahm-favs__cap"><strong>Natalie Imbruglia</strong> &ndash; Satisfied <span
                     class="ahm-favs__tag">(E)</span></figcaption>
               </figure>
@@ -650,25 +792,27 @@
     <!-- SPOTIFY -->
     <section class="ahm-section" style="padding-bottom: 150px;">
       <div class="ahm-wrap ahm-reveal">
-        <p class="ahm-eyebrow">Keep listening</p>
         <h2 class="ahm-h2">100's More on <span class="ahm-accent">Spotify</span></h2>
         <div class="ahm-spotify">
-          <iframe
-            src="https://open.spotify.com/embed/playlist/4bTUCimPaX8UYvdEiFApYF?utm_source=generator&theme=0"
+          <iframe src="https://open.spotify.com/embed/playlist/4bTUCimPaX8UYvdEiFApYF?utm_source=generator&theme=0"
             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-          <iframe
-            src="https://open.spotify.com/embed/playlist/7u5jEVKTnX3vOJN8DBINCr?utm_source=generator&theme=0"
+          <iframe src="https://open.spotify.com/embed/playlist/7u5jEVKTnX3vOJN8DBINCr?utm_source=generator&theme=0"
             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
         </div>
       </div>
     </section>
 
     <!-- PARTNERS IN CRIME -->
-    <section class="ahm-section" style="padding-top:0;">
+    <section class="ahm-section ahm-partners-section" style="padding-top:0;">
       <div class="ahm-wrap ahm-reveal">
-        <p class="ahm-eyebrow">A few of the</p>
-        <h2 class="ahm-h2"><span class="ahm-accent">Partners</span> in Crime</h2>
-        <ul class="ahm-partners">
+        <button class="ahm-accordion__head" id="ahmPartnersToggle" type="button" aria-expanded="false"
+          aria-controls="ahmPartnersPanel">
+          <span class="ahm-h2"><span class="ahm-accent">Partners</span> in Crime</span>
+          <span class="ahm-accordion__icon" aria-hidden="true"></span>
+        </button>
+        <div class="ahm-accordion__panel" id="ahmPartnersPanel" role="region" aria-labelledby="ahmPartnersToggle">
+          <div class="ahm-accordion__inner">
+            <ul class="ahm-partners">
           <li>Airbag</li>
           <li>Ambush Bug</li>
           <li>Amplexus</li>
@@ -898,8 +1042,10 @@
           <li>World&rsquo;s Collide</li>
           <li>Yolanda and the Stolen Boys</li>
           <li>Yeska</li>
-        </ul>
-        <p class="ahm-partners__note">Currently seeking artists starting with Q and X.</p>
+            </ul>
+            <p class="ahm-partners__note">Currently seeking artists starting with Q and X.</p>
+          </div>
+        </div>
       </div>
     </section>
   </main>
@@ -936,6 +1082,44 @@
         entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('ahm-reveal--in'); io.unobserve(e.target); } });
       }, { threshold: 0.12 });
       els.forEach(function (el) { io.observe(el); });
+    })();
+
+    /* ---- YouTube facades: load the real player on click ---- */
+    (function () {
+      var btns = document.querySelectorAll('.ahm-yt');
+      Array.prototype.forEach.call(btns, function (btn) {
+        btn.addEventListener('click', function () {
+          var id = btn.getAttribute('data-yt');
+          var iframe = document.createElement('iframe');
+          iframe.src = 'https://www.youtube.com/embed/' + id +
+            '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+          iframe.title = btn.getAttribute('aria-label') || 'YouTube video';
+          iframe.setAttribute('allow',
+            'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+          iframe.setAttribute('allowfullscreen', '');
+          iframe.setAttribute('frameborder', '0');
+          var box = btn.parentNode;        // .ahm-embed
+          box.innerHTML = '';
+          box.appendChild(iframe);
+        });
+      });
+    })();
+
+    /* ---- Partners in Crime: accordion toggle ---- */
+    (function () {
+      var btn = document.getElementById('ahmPartnersToggle');
+      var panel = document.getElementById('ahmPartnersPanel');
+      if (!btn || !panel) return;
+      btn.addEventListener('click', function () {
+        var open = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!open));
+        panel.style.maxHeight = open ? '0px' : (panel.scrollHeight + 'px');
+      });
+      window.addEventListener('resize', function () {
+        if (btn.getAttribute('aria-expanded') === 'true') {
+          panel.style.maxHeight = panel.scrollHeight + 'px';
+        }
+      });
     })();
   </script>
 

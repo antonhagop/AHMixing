@@ -34,140 +34,464 @@
       --ahm-maxw: 1180px;
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
       background: linear-gradient(90deg, var(--ahm-bg-1), var(--ahm-bg-2));
       background-attachment: fixed;
       font-family: 'Barlow', 'Helvetica Neue', Arial, sans-serif;
-      font-size: 1.15rem; font-weight: 300; line-height: 1.7; letter-spacing: 0.01rem;
+      font-size: 1.15rem;
+      font-weight: 300;
+      line-height: 1.7;
+      letter-spacing: 0.01rem;
       color: var(--ahm-text);
-      -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
     }
 
-    h1, h2, h3 {
-      font-family: 'Barlow Condensed', 'Barlow', sans-serif; font-weight: 600;
-      letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.05; margin: 0;
+    h1,
+    h2,
+    h3 {
+      font-family: 'Barlow Condensed', 'Barlow', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      line-height: 1.05;
+      margin: 0;
     }
 
-    a { color: inherit; }
-    img { max-width: 100%; display: block; }
+    a {
+      color: inherit;
+    }
 
-    .ahm-wrap { max-width: var(--ahm-maxw); margin: 0 auto; padding: 0 24px; }
-    .ahm-section { padding: 96px 0; }
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .ahm-wrap {
+      max-width: var(--ahm-maxw);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .ahm-section {
+      padding: 96px 0;
+    }
 
     .ahm-eyebrow {
-      color: var(--ahm-blue); font-family: 'Barlow', sans-serif; font-weight: 600;
-      letter-spacing: 0.18em; text-transform: uppercase; font-size: 0.82rem; margin: 0 0 14px;
+      color: var(--ahm-blue);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-size: 0.82rem;
+      margin: 0 0 14px;
     }
 
-    .ahm-h2 { font-size: clamp(2rem, 4vw, 3rem); margin: 0 0 22px; }
-    .ahm-lead p { color: var(--ahm-muted); margin: 0 0 18px; max-width: 56ch; }
+    .ahm-h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin: 0 0 22px;
+    }
+
+    .ahm-lead p {
+      color: var(--ahm-muted);
+      margin: 0 0 18px;
+      max-width: 56ch;
+    }
 
     .ahm-btn {
-      display: inline-block; margin-top: 12px; padding: 13px 30px;
-      font-family: 'Barlow', sans-serif; font-weight: 600; font-size: 0.95rem;
-      letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none;
-      color: var(--ahm-text); border: 1px solid var(--ahm-blue); border-radius: 4px;
-      background: transparent; cursor: pointer;
+      display: inline-block;
+      margin-top: 12px;
+      padding: 13px 30px;
+      font-family: 'Barlow', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--ahm-text);
+      border: 1px solid var(--ahm-blue);
+      border-radius: 4px;
+      background: transparent;
+      cursor: pointer;
       transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
     }
-    .ahm-btn:hover { background: var(--ahm-blue); color: #0A0A0A; transform: translateY(-2px); }
+
+    .ahm-btn:hover {
+      background: var(--ahm-blue);
+      color: #0A0A0A;
+      transform: translateY(-2px);
+    }
 
     /* ============================================================ HEADER ============================================================ */
     .ahm-header {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000; height: 50px;
-      display: flex; align-items: center; justify-content: flex-end;
-      padding: 0; transform: translateY(0);
-      transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1); will-change: transform;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 0;
+      transform: translateY(0);
+      transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: transform;
     }
-    .ahm-header--hidden { transform: translateY(-100%); }
+
+    .ahm-header--hidden {
+      transform: translateY(-100%);
+    }
+
     /* frosted, rounded strip on the right - matches the home page */
     .ahm-nav {
-      display: flex; align-items: center; gap: 34px; height: 100%;
-      padding: 0 22px 0 30px; border-radius: 0 0 0 10px;
+      display: flex;
+      align-items: center;
+      gap: 34px;
+      height: 100%;
+      padding: 0 22px 0 30px;
+      border-radius: 0 0 0 10px;
       background: rgba(10, 10, 10, 0.1);
-      -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
     }
+
     .ahm-nav__link {
-      color: var(--ahm-muted); text-decoration: none; font-size: 0.92rem; font-weight: 600;
-      letter-spacing: 0.04em; text-transform: uppercase; transition: color 0.25s ease, transform 0.25s ease;
+      color: var(--ahm-muted);
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.25s ease, transform 0.25s ease;
     }
-    .ahm-nav__link:hover { color: var(--ahm-blue); transform: scale(1.08); }
-    .ahm-nav__link--active { color: var(--ahm-blue); }
-    .ahm-nav__ig { display: flex; align-items: center; }
-    .ahm-nav__ig img { height: 22px; width: auto; opacity: 0.8; transition: opacity 0.25s ease, transform 0.25s ease; }
-    .ahm-nav__ig:hover img { opacity: 1; transform: scale(1.1); }
+
+    .ahm-nav__link:hover {
+      color: var(--ahm-blue);
+      transform: scale(1.08);
+    }
+
+    .ahm-nav__link--active {
+      color: var(--ahm-blue);
+    }
+
+    .ahm-nav__ig {
+      display: flex;
+      align-items: center;
+    }
+
+    .ahm-nav__ig img {
+      height: 22px;
+      width: auto;
+      opacity: 0.8;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .ahm-nav__ig:hover img {
+      opacity: 1;
+      transform: scale(1.1);
+    }
 
     /* ============================================================ PAGE HERO ============================================================ */
     .ahm-hero {
-      position: relative; min-height: 58vh; display: flex; align-items: center; justify-content: center;
-      text-align: center; overflow: hidden; padding: 140px 24px 80px;
+      position: relative;
+      min-height: 58vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      padding: 140px 24px 80px;
     }
+
     .ahm-hero__bg {
-      position: absolute; inset: 0; background: url('images/contact-collage.png') center/cover no-repeat;
-      filter: brightness(0.34) saturate(0.9); transform: scale(1.05); z-index: 0;
+      position: absolute;
+      inset: 0;
+      background: url('images/contact-collage.png') center/cover no-repeat;
+      filter: brightness(0.34) saturate(0.9);
+      transform: scale(1.05);
+      z-index: 0;
     }
+
     .ahm-hero__veil {
-      position: absolute; inset: 0;
+      position: absolute;
+      inset: 0;
       background: linear-gradient(180deg, rgba(10, 10, 10, 0.6) 0%, rgba(10, 10, 10, 0.4) 45%, rgba(20, 20, 20, 0.95) 100%);
       z-index: 1;
     }
-    .ahm-hero__inner { position: relative; z-index: 2; max-width: 820px; }
-    .ahm-hero__title { font-size: clamp(2.4rem, 6vw, 4.4rem); margin: 0 0 16px; }
-    .ahm-hero__sub { font-family: 'Barlow', sans-serif; font-weight: 400; font-size: clamp(1rem, 2vw, 1.3rem); color: var(--ahm-muted); margin: 0; }
+
+    .ahm-hero__inner {
+      position: relative;
+      z-index: 2;
+      max-width: 820px;
+    }
+
+    .ahm-hero__title {
+      font-size: clamp(2.4rem, 6vw, 4.4rem);
+      margin: 0 0 16px;
+    }
+
+    .ahm-hero__sub {
+      font-family: 'Barlow', sans-serif;
+      font-weight: 400;
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      color: var(--ahm-muted);
+      margin: 0;
+    }
 
     /* ============================================================ CONTACT LAYOUT ============================================================ */
-    .ahm-contact { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 60px; align-items: start; }
-
-    .ahm-checklist { list-style: none; padding: 0; margin: 22px 0 0; }
-    .ahm-checklist li {
-      position: relative; padding: 9px 0 9px 30px; color: var(--ahm-muted); border-bottom: 1px solid var(--ahm-line);
+    /* extra top padding now that the hero is gone (clears the fixed header) */
+    .ahm-contact-section {
+      padding-top: 130px;
     }
-    .ahm-checklist li::before { content: '\2197'; position: absolute; left: 0; color: var(--ahm-blue); font-weight: 600; }
 
-    .ahm-genres { margin-top: 34px; }
-    .ahm-genres h3 { font-size: 1.4rem; color: var(--ahm-text); margin: 0 0 10px; }
-    .ahm-genres p { color: var(--ahm-muted); margin: 0; font-size: 1.02rem; }
+    .ahm-contact {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    /* ---- photo gallery below the form ---- */
+    .ahm-gallery {
+      padding-top: 0;
+    }
+
+    .ahm-gallery__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+      align-items: start;
+    }
+
+    .ahm-gallery__item {
+      margin: 0;
+      text-align: center;
+    }
+
+    .ahm-gallery__item img {
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+    }
+
+    .ahm-gallery__cap {
+      margin-top: 14px;
+      color: #9a9a9a;
+      font-style: italic;
+      font-size: 0.98rem;
+      line-height: 1.45;
+    }
+
+    @media (max-width: 820px) {
+      .ahm-gallery__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 26px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .ahm-gallery__grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* matches the Genres heading (.ahm-genres h3) */
+    .ahm-contact-intro {
+      font-size: 1.4rem;
+      color: var(--ahm-text);
+      margin: 0 0 10px;
+    }
+
+    .ahm-checklist {
+      list-style: none;
+      padding: 0;
+      margin: 22px 0 0;
+    }
+
+    .ahm-checklist li {
+      position: relative;
+      padding: 9px 0 9px 30px;
+      color: var(--ahm-muted);
+      border-bottom: 1px solid var(--ahm-line);
+    }
+
+    .ahm-checklist li::before {
+      content: '\2197';
+      position: absolute;
+      left: 0;
+      color: var(--ahm-blue);
+      font-weight: 600;
+    }
+
+    .ahm-genres {
+      margin-top: 58px;
+    }
+
+    .ahm-genres h3 {
+      font-size: 1.4rem;
+      color: var(--ahm-text);
+      margin: 0 0 10px;
+    }
+
+    .ahm-genres p {
+      color: var(--ahm-muted);
+      margin: 0;
+      font-size: 1.02rem;
+    }
 
     /* ---- form ---- */
     .ahm-form {
-      border: 1px solid var(--ahm-line); border-radius: 10px; padding: 34px 30px;
+      border: 1px solid var(--ahm-line);
+      border-radius: 10px;
+      padding: 34px 30px;
       background: rgba(255, 255, 255, 0.02);
     }
-    .ahm-form__row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-    .ahm-field { margin-bottom: 18px; }
+
+    .ahm-form__row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .ahm-field {
+      margin-bottom: 18px;
+    }
+
     .ahm-field label {
-      display: block; font-family: 'Barlow', sans-serif; font-weight: 600; font-size: 0.82rem;
-      letter-spacing: 0.08em; text-transform: uppercase; color: var(--ahm-blue); margin-bottom: 7px;
+      display: block;
+      font-family: 'Barlow', sans-serif;
+      font-weight: 600;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ahm-blue);
+      margin-bottom: 7px;
     }
-    .ahm-field input, .ahm-field textarea {
-      width: 100%; padding: 12px 14px; background: rgba(10, 10, 10, 0.5);
-      border: 1px solid var(--ahm-line); border-radius: 5px; color: var(--ahm-text);
-      font-family: 'Barlow', sans-serif; font-size: 1rem; transition: border-color 0.2s ease;
+
+    .ahm-field input,
+    .ahm-field textarea {
+      width: 100%;
+      padding: 12px 14px;
+      background: rgba(10, 10, 10, 0.5);
+      border: 1px solid var(--ahm-line);
+      border-radius: 5px;
+      color: var(--ahm-text);
+      font-family: 'Barlow', sans-serif;
+      font-size: 1rem;
+      transition: border-color 0.2s ease;
     }
-    .ahm-field input:focus, .ahm-field textarea:focus { outline: none; border-color: var(--ahm-blue); }
-    .ahm-field textarea { resize: vertical; min-height: 140px; }
-    .ahm-form__note { color: #8a8a8a; font-size: 0.82rem; margin: 10px 0 0; }
+
+    .ahm-field input:focus,
+    .ahm-field textarea:focus {
+      outline: none;
+      border-color: var(--ahm-blue);
+    }
+
+    .ahm-field textarea {
+      resize: vertical;
+      min-height: 140px;
+    }
+
+    .ahm-form__note {
+      color: #8a8a8a;
+      font-size: 0.82rem;
+      margin: 10px 0 0;
+    }
+
+    .ahm-form__status {
+      font-size: 0.95rem;
+      margin: 14px 0 0;
+      min-height: 1.2em;
+    }
+
+    .ahm-form__status.is-ok {
+      color: #8fdca0;
+    }
+
+    .ahm-form__status.is-err {
+      color: #e2867f;
+    }
 
     /* ============================================================ FOOTER ============================================================ */
-    .ahm-footer { text-align: center; padding: 40px 24px 8px; }
-    .ahm-footer__copy { color: #8a8a8a; font-size: 0.85rem; letter-spacing: 0.04em; }
+    .ahm-footer {
+      text-align: center;
+      padding: 8px 24px;
+    }
+
+    .ahm-footer__copy {
+      color: #8a8a8a;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+    }
 
     /* ============================================================ REVEAL ============================================================ */
-    .ahm-reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.7s ease, transform 0.7s ease; }
-    .ahm-reveal--in { opacity: 1; transform: none; }
-    @media (prefers-reduced-motion: reduce) { .ahm-reveal { opacity: 1; transform: none; } html { scroll-behavior: auto; } }
+    .ahm-reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .ahm-reveal--in {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .ahm-reveal {
+        opacity: 1;
+        transform: none;
+      }
+
+      html {
+        scroll-behavior: auto;
+      }
+    }
 
     /* ============================================================ RESPONSIVE ============================================================ */
     @media (max-width: 820px) {
-      .ahm-section { padding: 70px 0; }
-      .ahm-contact { grid-template-columns: 1fr; gap: 40px; }
-      .ahm-form__row { grid-template-columns: 1fr; gap: 0; }
-      .ahm-nav { gap: 20px; }
-      .ahm-nav__link { font-size: 0.8rem; }
+      .ahm-section {
+        padding: 70px 0;
+      }
+
+      .ahm-contact {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .ahm-form__row {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .ahm-nav {
+        gap: 38px;
+      }
+
+      .ahm-nav__link {
+        font-size: 1.25rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .ahm-nav {
+        gap: 26px;
+        padding: 0 14px 0 18px;
+      }
+
+      .ahm-nav__link {
+        font-size: 1.12rem;
+      }
     }
   </style>
 </head>
@@ -180,8 +504,8 @@
       <a href="index.html" class="ahm-nav__link">Home</a>
       <a href="listen.html" class="ahm-nav__link">Listen</a>
       <a href="contact.html" class="ahm-nav__link ahm-nav__link--active" aria-current="page">Contact</a>
-      <a href="https://www.instagram.com/antonhagopmixing/" target="_blank" rel="noopener"
-        class="ahm-nav__ig" aria-label="Anton Hagop Mixing on Instagram">
+      <a href="https://www.instagram.com/antonhagopmixing/" target="_blank" rel="noopener" class="ahm-nav__ig"
+        aria-label="Anton Hagop Mixing on Instagram">
         <img src="images/instagram.png" alt="Instagram">
       </a>
     </nav>
@@ -189,28 +513,16 @@
 
   <main>
 
-    <!-- HERO -->
-    <section class="ahm-hero">
-      <div class="ahm-hero__bg"></div>
-      <div class="ahm-hero__veil"></div>
-      <div class="ahm-hero__inner">
-        <p class="ahm-eyebrow">Contact</p>
-        <h1 class="ahm-hero__title">Reach Out</h1>
-        <p class="ahm-hero__sub">Tell me about your project!</p>
-      </div>
-    </section>
-
     <!-- CONTACT -->
-    <section class="ahm-section">
+    <section class="ahm-section ahm-contact-section">
       <div class="ahm-wrap ahm-contact ahm-reveal">
 
-        <!-- left: what to tell me + genres -->
+        <!-- left: project checklist + genres -->
         <div>
-          <p class="ahm-eyebrow">A few things to mention</p>
-          <h2 class="ahm-h2">Tell Me About<br>Your Project</h2>
+          <h3 class="ahm-contact-intro">Tell me about your project.</h3>
           <ul class="ahm-checklist">
             <li>Genre / general vibe</li>
-            <li>How / where was the material recorded?</li>
+            <li>How and where was the material recorded?</li>
             <li>Any concerns with the quality or sounds?</li>
             <li>How many tracks per song roughly?</li>
             <li>Any pressing deadlines?</li>
@@ -226,10 +538,21 @@
         </div>
 
         <!-- right: form -->
-        <!-- NOTE: static site has no backend. Set the form `action` to your own
-             handler (Formspree / Netlify Forms / Basin) or give me your contact
-             email and I'll switch this to a mailto: form. -->
-        <form class="ahm-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <!-- ============================================================
+             FORMSPREE SETUP (one step):
+             1. Create a free form at https://formspree.io  (verify your email)
+             2. It gives you an endpoint like  https://formspree.io/f/abcdwxyz
+             3. Paste that endpoint into the form `action` below (replace YOUR_FORM_ID).
+             Submissions then arrive in your Formspree inbox + your email. The JS
+             below shows an inline "thanks" message without leaving the page.
+             ============================================================ -->
+        <form class="ahm-form" id="ahmContactForm" action="https://formspree.io/f/mqevdqkl" method="POST">
+          <!-- email subject line shown in your inbox -->
+          <input type="hidden" name="_subject" value="New enquiry — Anton Hagop Mixing">
+          <!-- spam honeypot: bots fill this, humans never see it -->
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true"
+            style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden">
+
           <div class="ahm-form__row">
             <div class="ahm-field">
               <label for="ahm-name">Name *</label>
@@ -259,8 +582,32 @@
             <textarea id="ahm-message" name="message" required></textarea>
           </div>
           <button type="submit" class="ahm-btn" style="margin-top:4px;">Submit</button>
-          <p class="ahm-form__note">I&rsquo;ll get back to you to chat about your mix.</p>
+          <p class="ahm-form__status" id="ahmFormStatus" role="status" aria-live="polite"></p>
         </form>
+      </div>
+    </section>
+
+    <!-- PHOTO GALLERY (below the form, as on the original site) -->
+    <section class="ahm-section ahm-gallery">
+      <div class="ahm-wrap ahm-reveal">
+        <div class="ahm-gallery__grid">
+          <figure class="ahm-gallery__item">
+            <img src="images/contact-powderfinger.png" alt="Anton with Powderfinger in the studio">
+            <figcaption class="ahm-gallery__cap">With Powderfinger (2002)<br>Vulture Street album</figcaption>
+          </figure>
+          <figure class="ahm-gallery__item">
+            <img src="images/contact-arias.png" alt="2002 ARIA Awards collage">
+            <figcaption class="ahm-gallery__cap">2002 ARIAs&hellip;big night</figcaption>
+          </figure>
+          <figure class="ahm-gallery__item">
+            <img src="images/contact-cold-chisel.png" alt="Anton with Cold Chisel">
+            <figcaption class="ahm-gallery__cap">With the mighty Cold Chisel<br>circa 2001</figcaption>
+          </figure>
+          <figure class="ahm-gallery__item">
+            <img src="images/contact-dissociatives.png" alt="Anton with Paul and Dan, The Dissociatives">
+            <figcaption class="ahm-gallery__cap">With Paul and Dan (2005)<br>Dissociatives album</figcaption>
+          </figure>
+        </div>
       </div>
     </section>
   </main>
@@ -298,21 +645,105 @@
       }, { threshold: 0.12 });
       els.forEach(function (el) { io.observe(el); });
     })();
+
+    /* ---- Contact form: submit to Formspree via AJAX, show inline status ---- */
+    (function () {
+      var form = document.getElementById('ahmContactForm');
+      var status = document.getElementById('ahmFormStatus');
+      if (!form || !status) return;
+
+      function setStatus(msg, ok) {
+        status.textContent = msg;
+        status.classList.remove('is-ok', 'is-err');
+        status.classList.add(ok ? 'is-ok' : 'is-err');
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        if (form.action.indexOf('YOUR_FORM_ID') !== -1) {
+          setStatus('Form not connected yet — add your Formspree form ID to make it live.', false);
+          return;
+        }
+
+        var btn = form.querySelector('button[type="submit"]');
+        if (btn) { btn.disabled = true; }
+        setStatus('Sending…', true);
+
+        fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        }).then(function (res) {
+          if (res.ok) {
+            form.reset();
+            setStatus('Thanks — your message has been sent. I’ll be in touch soon.', true);
+          } else {
+            res.json().then(function (data) {
+              var m = (data && data.errors) ? data.errors.map(function (x) { return x.message; }).join(', ')
+                : 'Something went wrong. Please email me directly.';
+              setStatus(m, false);
+            }).catch(function () { setStatus('Something went wrong. Please email me directly.', false); });
+          }
+        }).catch(function () {
+          setStatus('Network error — please try again, or email me directly.', false);
+        }).then(function () {
+          if (btn) { btn.disabled = false; }
+        });
+      });
+    })();
   </script>
 
   <!-- ===== Soft / momentum scrolling (Lenis) - matches Zen Amps ===== -->
   <style>
-    html.ahm-sb-on { scrollbar-width: none; }
-    html.ahm-sb-on::-webkit-scrollbar { width: 0; height: 0; }
-    .ahm-sb { position: fixed; top: 0; right: 0; width: 12px; height: 100vh; z-index: 9990; pointer-events: none; }
-    .ahm-sb__thumb {
-      position: absolute; top: 0; right: 3px; width: 6px; border-radius: 3px;
-      background: rgba(146, 164, 177, 0.45); cursor: grab; pointer-events: auto;
-      will-change: transform; transition: background .2s ease, width .12s ease;
+    html.ahm-sb-on {
+      scrollbar-width: none;
     }
-    .ahm-sb__thumb:hover { background: rgba(146, 164, 177, 0.7); width: 8px; }
-    .ahm-sb__thumb.is-grabbing { background: rgba(146, 164, 177, 0.92); width: 8px; cursor: grabbing; }
-    @media (hover: none) { .ahm-sb { display: none; } }
+
+    html.ahm-sb-on::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+    }
+
+    .ahm-sb {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 12px;
+      height: 100vh;
+      z-index: 9990;
+      pointer-events: none;
+    }
+
+    .ahm-sb__thumb {
+      position: absolute;
+      top: 0;
+      right: 3px;
+      width: 6px;
+      border-radius: 3px;
+      background: rgba(146, 164, 177, 0.45);
+      cursor: grab;
+      pointer-events: auto;
+      will-change: transform;
+      transition: background .2s ease, width .12s ease;
+    }
+
+    .ahm-sb__thumb:hover {
+      background: rgba(146, 164, 177, 0.7);
+      width: 8px;
+    }
+
+    .ahm-sb__thumb.is-grabbing {
+      background: rgba(146, 164, 177, 0.92);
+      width: 8px;
+      cursor: grabbing;
+    }
+
+    @media (hover: none) {
+      .ahm-sb {
+        display: none;
+      }
+    }
   </style>
   <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.13/dist/lenis.css">
   <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
