@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Listen | Anton Hagop Mixing &ndash; Before &amp; After Examples</title>
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+
+  <meta name="description"
+    content="Hear before-and-after mixing examples and a selection of credits - silverchair, Powderfinger, Missy Higgins and hundreds more.">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Anton Hagop Mixing">
+  <meta property="og:title" content="Listen | Anton Hagop Mixing">
+  <meta property="og:description" content="Before-and-after examples - the differences are not subtle.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@500;600&display=swap"
+    rel="stylesheet">
+
+  <style>
+    /* ============================================================ BRAND TOKENS ============================================================ */
+    :root {
+      --ahm-bg-1: #0A0A0A;
+      --ahm-bg-2: #272727;
+      --ahm-blue: #92a4b1;
+      --ahm-text: #ffffff;
+      --ahm-muted: #c9c9c9;
+      --ahm-line: rgba(146, 164, 177, 0.25);
+      --ahm-maxw: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: linear-gradient(90deg, var(--ahm-bg-1), var(--ahm-bg-2));
+      background-attachment: fixed;
+      font-family: 'Barlow', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 1.15rem;
+      font-weight: 300;
+      line-height: 1.7;
+      letter-spacing: 0.01rem;
+      color: var(--ahm-text);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Barlow Condensed', 'Barlow', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      line-height: 1.05;
+      margin: 0;
+    }
+
+    a { color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    .ahm-wrap { max-width: var(--ahm-maxw); margin: 0 auto; padding: 0 24px; }
+    .ahm-section { padding: 88px 0; }
+
+    .ahm-eyebrow {
+      color: var(--ahm-blue);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-size: 0.82rem;
+      margin: 0 0 14px;
+    }
+
+    .ahm-h2 { font-size: clamp(2rem, 4vw, 3rem); margin: 0 0 12px; }
+    .ahm-lead p { color: var(--ahm-muted); margin: 0 0 18px; max-width: 60ch; }
+
+    .ahm-btn {
+      display: inline-block; margin-top: 12px; padding: 13px 30px;
+      font-family: 'Barlow', sans-serif; font-weight: 600; font-size: 0.95rem;
+      letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none;
+      color: var(--ahm-text); border: 1px solid var(--ahm-blue); border-radius: 4px;
+      background: transparent; transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+    }
+    .ahm-btn:hover { background: var(--ahm-blue); color: #0A0A0A; transform: translateY(-2px); }
+
+    /* ============================================================ HEADER ============================================================ */
+    .ahm-header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000; height: 56px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 24px 0 20px; transform: translateY(0);
+      transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), background 0.3s ease; will-change: transform;
+    }
+    .ahm-header--scrolled { background: rgba(10, 10, 10, 0.55); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+    .ahm-header--hidden { transform: translateY(-100%); }
+    .ahm-header__logo img { height: 36px; width: auto; }
+    .ahm-nav { display: flex; align-items: center; gap: 34px; }
+    .ahm-nav__link {
+      color: var(--ahm-muted); text-decoration: none; font-size: 0.92rem; font-weight: 600;
+      letter-spacing: 0.04em; text-transform: uppercase; transition: color 0.25s ease, transform 0.25s ease;
+    }
+    .ahm-nav__link:hover { color: var(--ahm-blue); transform: scale(1.08); }
+    .ahm-nav__link--active { color: var(--ahm-blue); }
+
+    /* ============================================================ PAGE HERO ============================================================ */
+    .ahm-hero {
+      position: relative; min-height: 60vh; display: flex; align-items: center; justify-content: center;
+      text-align: center; overflow: hidden; padding: 140px 24px 80px;
+    }
+    .ahm-hero__bg {
+      position: absolute; inset: 0; background: url('images/control-room.png') center/cover no-repeat;
+      filter: brightness(0.36) saturate(0.9); transform: scale(1.05); z-index: 0;
+    }
+    .ahm-hero__veil {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(10, 10, 10, 0.55) 0%, rgba(10, 10, 10, 0.35) 45%, rgba(20, 20, 20, 0.95) 100%);
+      z-index: 1;
+    }
+    .ahm-hero__inner { position: relative; z-index: 2; max-width: 820px; }
+    .ahm-hero__title { font-size: clamp(2.2rem, 6vw, 4.2rem); margin: 0 0 18px; }
+    .ahm-hero__sub {
+      font-family: 'Barlow', sans-serif; font-weight: 400; font-size: clamp(1rem, 2vw, 1.25rem);
+      color: var(--ahm-muted); margin: 0;
+    }
+
+    /* ============================================================ VIDEO / EMBED GRID ============================================================ */
+    .ahm-videos { display: grid; grid-template-columns: repeat(2, 1fr); gap: 26px; margin-top: 36px; }
+
+    .ahm-embed {
+      position: relative; width: 100%; padding-top: 56.25%;
+      border-radius: 8px; overflow: hidden; box-shadow: 0 14px 38px rgba(0, 0, 0, 0.5);
+      background: #000;
+    }
+    .ahm-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+    /* ============================================================ CREDITS LIST ============================================================ */
+    .ahm-credits { list-style: none; padding: 0; margin: 26px 0 0; max-width: 640px; }
+    .ahm-credits li { padding: 11px 0; border-bottom: 1px solid var(--ahm-line); color: var(--ahm-muted); }
+    .ahm-credits li strong { color: var(--ahm-text); font-weight: 600; }
+    .ahm-credits__key { color: var(--ahm-blue); font-size: 0.9rem; letter-spacing: 0.04em; }
+
+    /* ============================================================ SPOTIFY ============================================================ */
+    .ahm-spotify { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 32px; }
+    .ahm-spotify iframe { width: 100%; border: 0; border-radius: 12px; }
+
+    /* ============================================================ PARTNERS IN CRIME ============================================================ */
+    .ahm-partners {
+      list-style: none; padding: 0; margin: 30px 0 0;
+      column-width: 165px; column-gap: 30px;
+    }
+    .ahm-partners li {
+      color: var(--ahm-muted); font-size: 0.98rem; padding: 5px 0;
+      break-inside: avoid;
+    }
+    .ahm-partners li:hover { color: var(--ahm-blue); }
+    .ahm-partners__note {
+      margin-top: 34px; color: var(--ahm-blue); font-family: 'Barlow Condensed', sans-serif;
+      text-transform: uppercase; letter-spacing: 0.06em; font-size: 1.2rem;
+    }
+
+    /* ============================================================ FOOTER ============================================================ */
+    .ahm-footer { text-align: center; padding: 54px 24px 60px; }
+    .ahm-footer__social { display: inline-flex; margin-bottom: 20px; }
+    .ahm-footer__social img { width: 30px; height: 30px; opacity: 0.7; transition: opacity 0.25s ease, transform 0.25s ease; }
+    .ahm-footer__social:hover img { opacity: 1; transform: scale(1.1); }
+    .ahm-footer__copy { color: #8a8a8a; font-size: 0.85rem; letter-spacing: 0.04em; }
+
+    /* ============================================================ REVEAL ============================================================ */
+    .ahm-reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .ahm-reveal--in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .ahm-reveal { opacity: 1; transform: none; } html { scroll-behavior: auto; } }
+
+    /* ============================================================ RESPONSIVE ============================================================ */
+    @media (max-width: 820px) {
+      .ahm-section { padding: 66px 0; }
+      .ahm-videos { grid-template-columns: 1fr; }
+      .ahm-spotify { grid-template-columns: 1fr; }
+      .ahm-nav { gap: 20px; }
+      .ahm-nav__link { font-size: 0.8rem; }
+      .ahm-header__logo img { height: 30px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="ahm-header" id="ahmHeader">
+    <a href="index.html" class="ahm-header__logo" aria-label="Anton Hagop Mixing - home">
+      <img src="images/logo.png" alt="Anton Hagop Mixing">
+    </a>
+    <nav class="ahm-nav">
+      <a href="index.html" class="ahm-nav__link">Home</a>
+      <a href="mixing.html" class="ahm-nav__link">Mixing</a>
+      <a href="listen.html" class="ahm-nav__link ahm-nav__link--active" aria-current="page">Listen</a>
+      <a href="contact.html" class="ahm-nav__link">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="ahm-hero">
+      <div class="ahm-hero__bg"></div>
+      <div class="ahm-hero__veil"></div>
+      <div class="ahm-hero__inner">
+        <p class="ahm-eyebrow">Listen</p>
+        <h1 class="ahm-hero__title">Hear the Results</h1>
+        <p class="ahm-hero__sub">Listen to before and after examples &ndash; the differences are not subtle!</p>
+      </div>
+    </section>
+
+    <!-- BEFORE / AFTER VIDEOS -->
+    <section class="ahm-section">
+      <div class="ahm-wrap ahm-reveal">
+        <p class="ahm-eyebrow">Before &amp; after</p>
+        <h2 class="ahm-h2">The Difference a Mix Makes</h2>
+        <div class="ahm-videos">
+          <div class="ahm-embed"><iframe src="https://player.vimeo.com/video/1003397396?title=0&byline=0&portrait=0" title="Before and after example" allow="fullscreen; picture-in-picture" loading="lazy"></iframe></div>
+          <div class="ahm-embed"><iframe src="https://player.vimeo.com/video/1003394170?title=0&byline=0&portrait=0" title="Before and after example" allow="fullscreen; picture-in-picture" loading="lazy"></iframe></div>
+          <div class="ahm-embed"><iframe src="https://player.vimeo.com/video/1001861448?title=0&byline=0&portrait=0" title="Before and after example" allow="fullscreen; picture-in-picture" loading="lazy"></iframe></div>
+          <div class="ahm-embed"><iframe src="https://player.vimeo.com/video/1001886355?title=0&byline=0&portrait=0" title="Before and after example" allow="fullscreen; picture-in-picture" loading="lazy"></iframe></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AUSSIE FAVOURITES -->
+    <section class="ahm-section" style="padding-top:0;">
+      <div class="ahm-wrap ahm-reveal">
+        <p class="ahm-eyebrow"><span class="ahm-credits__key">(E = Engineered, M = Mixed)</span></p>
+        <h2 class="ahm-h2">Some Aussie Favourites</h2>
+        <ul class="ahm-credits">
+          <li><strong>silverchair</strong> &ndash; Diorama album <span class="ahm-credits__key">(E)</span></li>
+          <li><strong>Missy Higgins</strong> &ndash; debut EP <span class="ahm-credits__key">(M)</span></li>
+          <li><strong>Powderfinger</strong> &ndash; Vulture Street album <span class="ahm-credits__key">(E, addntl)</span></li>
+          <li><strong>The Dissociatives</strong> &ndash; album <span class="ahm-credits__key">(E)</span></li>
+          <li><strong>The Smith Street Band</strong> &ndash; Life After Football album <span class="ahm-credits__key">(M)</span></li>
+          <li><strong>The Superjesus</strong> &ndash; Second Sun <span class="ahm-credits__key">(M)</span></li>
+          <li><strong>Press Club</strong> &ndash; No Pressure <span class="ahm-credits__key">(M)</span></li>
+          <li><strong>The Terrys</strong> &ndash; True Colour album <span class="ahm-credits__key">(M)</span></li>
+          <li><strong>Natalie Imbruglia</strong> &ndash; Satisfied <span class="ahm-credits__key">(E)</span></li>
+        </ul>
+        <div class="ahm-videos" style="margin-top:40px;">
+          <div class="ahm-embed"><iframe src="https://player.vimeo.com/video/1001478987?title=0&byline=0&portrait=0" title="Mixing example" allow="fullscreen; picture-in-picture" loading="lazy"></iframe></div>
+          <div class="ahm-embed"><iframe src="https://player.vimeo.com/video/1001827268?title=0&byline=0&portrait=0" title="Mixing example" allow="fullscreen; picture-in-picture" loading="lazy"></iframe></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SPOTIFY -->
+    <section class="ahm-section" style="padding-top:0;">
+      <div class="ahm-wrap ahm-reveal">
+        <p class="ahm-eyebrow">Keep listening</p>
+        <h2 class="ahm-h2">100's More on Spotify</h2>
+        <div class="ahm-spotify">
+          <iframe style="height:352px" src="https://open.spotify.com/embed/playlist/4bTUCimPaX8UYvdEiFApYF?utm_source=generator&theme=0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          <iframe style="height:352px" src="https://open.spotify.com/embed/playlist/7u5jEVKTnX3vOJN8DBINCr?utm_source=generator" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- PARTNERS IN CRIME -->
+    <section class="ahm-section" style="padding-top:0;">
+      <div class="ahm-wrap ahm-reveal">
+        <p class="ahm-eyebrow">A few of the</p>
+        <h2 class="ahm-h2">Partners in Crime</h2>
+        <ul class="ahm-partners">
+          <li>Airbag</li><li>Ambush Bug</li><li>Amplexus</li><li>Amy Vee</li><li>Anjeliina</li><li>Anna Salleh</li><li>Another Day Down</li><li>Artaxian Mantra</li><li>Bastian</li><li>Ben Gillies</li><li>Before The Wave</li><li>Big Alcatraz</li><li>Bill Hunt</li><li>Birds Of Tokyo</li><li>Blackstar</li><li>Blind Eliza</li><li>Blue Gin</li><li>Bobby Danger</li><li>Boston Shaker</li><li>Boukabou</li><li>Brand</li><li>Bronte Alva</li><li>Brooke Fraser</li><li>Brothers of Filth</li><li>Bryce Jacobs</li><li>Charlie Crook</li><li>Cherie Lucas</li><li>Chris Abrahams</li><li>Christine Anu</li><li>CJ Stranger</li><li>Clay J Gladstone</li><li>Cletis Carr</li><li>Cold Chisel</li><li>Copious Dribble</li><li>Cyrus</li><li>Dadichi Toth</li><li>Dallas</li><li>Daniel Johns</li><li>December Seven</li><li>Denim</li><li>Diesel</li><li>Dirty Skanks</li><li>Distillery</li><li>Divers</li><li>Doradus</li><li>Double on Hearts</li><li>Doug Parkinson</li><li>Doug Williams</li><li>Dreamshifter</li><li>Dropmotive</li><li>Droptank</li><li>Duncan James</li><li>Ed Kuepper</li><li>Electric State</li><li>Element</li><li>Ermintrude</li><li>Euphonic</li><li>Eye On Stone</li><li>Fell To Erin</li><li>Fifth House</li><li>Flashpot Moments</li><li>Flee The Capital</li><li>Flightless</li><li>Flowers For Jayne</li><li>Floyd Vincent</li><li>FlyByWire</li><li>Forgotten Sorrows</li><li>Francis Royale</li><li>Funky Love Tank</li><li>Fuselage</li><li>Future Primitive</li><li>Gareth Paul</li><li>Ginger</li><li>Glenn Shorrock</li><li>Goldthrone</li><li>Guns For Glory</li><li>Hansel</li><li>Happenstance</li><li>Helical</li><li>Hi-Fi Reactor</li><li>High Tropics</li><li>Hoodoo Gurus</li><li>Hugh Jackman</li><li>Human Nature</li><li>Hyperlilly</li><li>Increment</li><li>Injettison</li><li>Innertone</li><li>Jack Jones</li><li>Jada Pinkett-Smith</li><li>Jake Clyne</li><li>Jamel Boukabou</li><li>Jay Smith</li><li>Jettison</li><li>Jim Barbour</li><li>Jimmy Barnes</li><li>Jodi Martin</li><li>Jon Ann</li><li>Jordan Millar</li><li>Jonah Primo</li><li>Jonathan Armstrong</li><li>Kailey Pallas</li><li>Karl Morgan</li><li>Ken Jewell</li><li>Killing Flaw</li><li>Kizmet</li><li>Koh Llanta</li><li>Lancaster Sound</li><li>Land Speed Record</li><li>Larsen</li><li>Last Embers</li><li>Late Night Lies</li><li>Lee Kernaghan</li><li>Left At The Avenue</li><li>Loser</li><li>Louder</li><li>Luna Assassins</li><li>Luxury</li><li>Marcia Hines</li><li>Mark O&rsquo;Shea</li><li>Mark Owen Scott</li><li>Marrow Lane</li><li>Michael Theodoridis</li><li>Midnight Oil</li><li>Missy Higgins</li><li>Mitchell Shadlow</li><li>Morganics</li><li>Mr Brown</li><li>My Friend Benny</li><li>My Kind Of Chaos</li><li>Natalie Imbruglia</li><li>Nathan Cavaleri</li><li>Neil Avery</li><li>Neon Bones</li><li>Neverworld</li><li>New Trends</li><li>Nixin</li><li>Nocturnal Animals</li><li>Oligarch</li><li>Pale Riders</li><li>Patriarch</li><li>paulmac</li><li>Paul Winn</li><li>Peter Gelling</li><li>Phil Jamieson</li><li>Phonograph</li><li>Porcelain Grace</li><li>Powderfinger</li><li>Press Club</li><li>Primary</li><li>Ragdoll</li><li>Redline</li><li>Reflector</li><li>Reuben Morgan</li><li>Richard Madden</li><li>Roll-On Effect</li><li>Ryan Thomas</li><li>Sally-Anne Whitten</li><li>Samahdi</li><li>Sam McNally</li><li>Sanny Veloo</li><li>Sarah Carnegie</li><li>Sarah McLoud</li><li>Sarah McGregor</li><li>Sara Storer</li><li>Self Is A Seed</li><li>Sex Dolls</li><li>Sick Puppies</li><li>silverchair</li><li>Sir Veto</li><li>Skyes Law</li><li>Skyway</li><li>Slimey Things</li><li>Something Urban</li><li>Sonorcast</li><li>Soulphase</li><li>Soul Train</li><li>Spinifex</li><li>Steve Facey</li><li>Street Legal</li><li>Sunday Sun</li><li>Sunroom</li><li>Switch 3</li><li>Terrace House</li><li>The Casanovas</li><li>The Cry</li><li>The Dagwood Dogs</li><li>The Devoted Few</li><li>The Dirty Sweet</li><li>The Dissociatives</li><li>The Funny Jims</li><li>The Golden Age</li><li>The Hanging Tree</li><li>The Hard Aches</li><li>The Last Minute</li><li>The Live Room</li><li>The Monaco</li><li>The Necks</li><li>The Oceans</li><li>The Radiators</li><li>The Shots</li><li>The Sleepyheads</li><li>The Smith Street Band</li><li>The Spencer Project</li><li>The SunBears</li><li>The Superjesus</li><li>The Terrys</li><li>The Toothpicks</li><li>The Urban Sea</li><li>The Whitlams</li><li>The Wildfires</li><li>Thirsty Merc</li><li>Torch Le Monde</li><li>TJ Eckelberg</li><li>Trouser</li><li>Tyler&rsquo;s Riot</li><li>Upbeat Ambassadors</li><li>Using Three Words</li><li>Vegas Baby</li><li>Velvet Cross</li><li>Vipersnatch</li><li>Waikiki</li><li>Waiter</li><li>White Bonsai</li><li>Will Smith</li><li>Winter Starlings</li><li>World&rsquo;s Collide</li><li>Yolanda and the Stolen Boys</li><li>Yeska</li>
+        </ul>
+        <p class="ahm-partners__note">Currently seeking artists starting with Q and X.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="ahm-footer">
+    <a class="ahm-footer__social" href="https://www.instagram.com/antonhagopmixing/" target="_blank"
+      rel="noopener" aria-label="Anton Hagop Mixing on Instagram">
+      <img src="images/instagram.png" alt="Instagram">
+    </a>
+    <p class="ahm-footer__copy">Copyright &copy; 2026 &ndash; Anton Hagop Mixing &ndash; All Rights Reserved.</p>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script>
+    (function () {
+      var header = document.getElementById('ahmHeader');
+      var lastY = window.pageYOffset; var ticking = false; var DELTA = 6, TOP_LOCK = 84;
+      function onScroll() {
+        var y = window.pageYOffset;
+        header.classList.toggle('ahm-header--scrolled', y > 10);
+        if (Math.abs(y - lastY) >= DELTA) {
+          if (y > lastY && y > TOP_LOCK) { header.classList.add('ahm-header--hidden'); }
+          else { header.classList.remove('ahm-header--hidden'); }
+          lastY = y;
+        }
+        ticking = false;
+      }
+      window.addEventListener('scroll', function () {
+        if (!ticking) { window.requestAnimationFrame(onScroll); ticking = true; }
+      }, { passive: true });
+    })();
+
+    (function () {
+      var els = document.querySelectorAll('.ahm-reveal');
+      if (!('IntersectionObserver' in window)) { els.forEach(function (el) { el.classList.add('ahm-reveal--in'); }); return; }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('ahm-reveal--in'); io.unobserve(e.target); } });
+      }, { threshold: 0.12 });
+      els.forEach(function (el) { io.observe(el); });
+    })();
+  </script>
+
+  <!-- ===== Soft / momentum scrolling (Lenis) - matches Zen Amps ===== -->
+  <style>
+    html.ahm-sb-on { scrollbar-width: none; }
+    html.ahm-sb-on::-webkit-scrollbar { width: 0; height: 0; }
+    .ahm-sb { position: fixed; top: 0; right: 0; width: 12px; height: 100vh; z-index: 9990; pointer-events: none; }
+    .ahm-sb__thumb {
+      position: absolute; top: 0; right: 3px; width: 6px; border-radius: 3px;
+      background: rgba(146, 164, 177, 0.45); cursor: grab; pointer-events: auto;
+      will-change: transform; transition: background .2s ease, width .12s ease;
+    }
+    .ahm-sb__thumb:hover { background: rgba(146, 164, 177, 0.7); width: 8px; }
+    .ahm-sb__thumb.is-grabbing { background: rgba(146, 164, 177, 0.92); width: 8px; cursor: grabbing; }
+    @media (hover: none) { .ahm-sb { display: none; } }
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.13/dist/lenis.css">
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script>
+    (function () {
+      if (!window.Lenis) return;
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var EASE = function (t) { return 1 - Math.pow(1 - t, 4); };
+      var lenis = new Lenis({ duration: 1.2, easing: EASE, smoothWheel: true, wheelMultiplier: 1.0, touchMultiplier: 1.0, anchors: true, stopInertiaOnNavigate: true });
+      window.ahmLenis = lenis;
+      function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+      requestAnimationFrame(raf);
+      if (!(window.matchMedia && window.matchMedia('(hover: none)').matches)) {
+        var SB_HALT = 0.8;
+        var bar = document.createElement('div'); bar.className = 'ahm-sb';
+        var thumb = document.createElement('div'); thumb.className = 'ahm-sb__thumb';
+        bar.appendChild(thumb); document.body.appendChild(bar);
+        document.documentElement.classList.add('ahm-sb-on');
+        function vh() { return window.innerHeight; }
+        function clamp(v, a, b) { return v < a ? a : (v > b ? b : v); }
+        function thumbH() { var docH = lenis.limit + vh(); return Math.max(40, (vh() / docH) * vh()); }
+        function render() {
+          var th = thumbH(); var maxTop = vh() - th;
+          var p = lenis.limit ? clamp(lenis.scroll / lenis.limit, 0, 1) : 0;
+          thumb.style.height = th + 'px'; thumb.style.transform = 'translate3d(0,' + (p * maxTop) + 'px,0)';
+        }
+        lenis.on('scroll', render); window.addEventListener('resize', render); render();
+        var dragging = false, startY = 0, startScroll = 0, startMaxTop = 1;
+        thumb.addEventListener('pointerdown', function (e) {
+          dragging = true; startY = e.clientY; startScroll = lenis.scroll;
+          startMaxTop = Math.max(1, vh() - thumbH());
+          try { thumb.setPointerCapture(e.pointerId); } catch (_) { }
+          thumb.classList.add('is-grabbing'); e.preventDefault();
+        });
+        window.addEventListener('pointermove', function (e) {
+          if (!dragging) return;
+          var dy = e.clientY - startY;
+          var target = clamp(startScroll + (dy / startMaxTop) * lenis.limit, 0, lenis.limit);
+          lenis.scrollTo(target, { duration: SB_HALT, easing: EASE, force: true });
+        });
+        window.addEventListener('pointerup', function (e) {
+          if (!dragging) return; dragging = false;
+          try { thumb.releasePointerCapture(e.pointerId); } catch (_) { }
+          thumb.classList.remove('is-grabbing');
+        });
+      }
+    })();
+  </script>
+</body>
+
+</html>

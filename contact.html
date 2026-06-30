@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Anton Hagop Mixing &ndash; Start Your Project</title>
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+
+  <meta name="description"
+    content="Get in touch about mixing your project. Tell me about your music and I'll be in contact to talk about your mix.">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Anton Hagop Mixing">
+  <meta property="og:title" content="Contact | Anton Hagop Mixing">
+  <meta property="og:description" content="Tell me about your project and let's talk mixing.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@500;600&display=swap"
+    rel="stylesheet">
+
+  <style>
+    /* ============================================================ BRAND TOKENS ============================================================ */
+    :root {
+      --ahm-bg-1: #0A0A0A;
+      --ahm-bg-2: #272727;
+      --ahm-blue: #92a4b1;
+      --ahm-text: #ffffff;
+      --ahm-muted: #c9c9c9;
+      --ahm-line: rgba(146, 164, 177, 0.25);
+      --ahm-maxw: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: linear-gradient(90deg, var(--ahm-bg-1), var(--ahm-bg-2));
+      background-attachment: fixed;
+      font-family: 'Barlow', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 1.15rem; font-weight: 300; line-height: 1.7; letter-spacing: 0.01rem;
+      color: var(--ahm-text);
+      -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Barlow Condensed', 'Barlow', sans-serif; font-weight: 600;
+      letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.05; margin: 0;
+    }
+
+    a { color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    .ahm-wrap { max-width: var(--ahm-maxw); margin: 0 auto; padding: 0 24px; }
+    .ahm-section { padding: 96px 0; }
+
+    .ahm-eyebrow {
+      color: var(--ahm-blue); font-family: 'Barlow', sans-serif; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase; font-size: 0.82rem; margin: 0 0 14px;
+    }
+
+    .ahm-h2 { font-size: clamp(2rem, 4vw, 3rem); margin: 0 0 22px; }
+    .ahm-lead p { color: var(--ahm-muted); margin: 0 0 18px; max-width: 56ch; }
+
+    .ahm-btn {
+      display: inline-block; margin-top: 12px; padding: 13px 30px;
+      font-family: 'Barlow', sans-serif; font-weight: 600; font-size: 0.95rem;
+      letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none;
+      color: var(--ahm-text); border: 1px solid var(--ahm-blue); border-radius: 4px;
+      background: transparent; cursor: pointer;
+      transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+    }
+    .ahm-btn:hover { background: var(--ahm-blue); color: #0A0A0A; transform: translateY(-2px); }
+
+    /* ============================================================ HEADER ============================================================ */
+    .ahm-header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000; height: 56px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 24px 0 20px; transform: translateY(0);
+      transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), background 0.3s ease; will-change: transform;
+    }
+    .ahm-header--scrolled { background: rgba(10, 10, 10, 0.55); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+    .ahm-header--hidden { transform: translateY(-100%); }
+    .ahm-header__logo img { height: 36px; width: auto; }
+    .ahm-nav { display: flex; align-items: center; gap: 34px; }
+    .ahm-nav__link {
+      color: var(--ahm-muted); text-decoration: none; font-size: 0.92rem; font-weight: 600;
+      letter-spacing: 0.04em; text-transform: uppercase; transition: color 0.25s ease, transform 0.25s ease;
+    }
+    .ahm-nav__link:hover { color: var(--ahm-blue); transform: scale(1.08); }
+    .ahm-nav__link--active { color: var(--ahm-blue); }
+
+    /* ============================================================ PAGE HERO ============================================================ */
+    .ahm-hero {
+      position: relative; min-height: 58vh; display: flex; align-items: center; justify-content: center;
+      text-align: center; overflow: hidden; padding: 140px 24px 80px;
+    }
+    .ahm-hero__bg {
+      position: absolute; inset: 0; background: url('images/contact-collage.png') center/cover no-repeat;
+      filter: brightness(0.34) saturate(0.9); transform: scale(1.05); z-index: 0;
+    }
+    .ahm-hero__veil {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(10, 10, 10, 0.6) 0%, rgba(10, 10, 10, 0.4) 45%, rgba(20, 20, 20, 0.95) 100%);
+      z-index: 1;
+    }
+    .ahm-hero__inner { position: relative; z-index: 2; max-width: 820px; }
+    .ahm-hero__title { font-size: clamp(2.4rem, 6vw, 4.4rem); margin: 0 0 16px; }
+    .ahm-hero__sub { font-family: 'Barlow', sans-serif; font-weight: 400; font-size: clamp(1rem, 2vw, 1.3rem); color: var(--ahm-muted); margin: 0; }
+
+    /* ============================================================ CONTACT LAYOUT ============================================================ */
+    .ahm-contact { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 60px; align-items: start; }
+
+    .ahm-checklist { list-style: none; padding: 0; margin: 22px 0 0; }
+    .ahm-checklist li {
+      position: relative; padding: 9px 0 9px 30px; color: var(--ahm-muted); border-bottom: 1px solid var(--ahm-line);
+    }
+    .ahm-checklist li::before { content: '\2197'; position: absolute; left: 0; color: var(--ahm-blue); font-weight: 600; }
+
+    .ahm-genres { margin-top: 34px; }
+    .ahm-genres h3 { font-size: 1.4rem; color: var(--ahm-text); margin: 0 0 10px; }
+    .ahm-genres p { color: var(--ahm-muted); margin: 0; font-size: 1.02rem; }
+
+    /* ---- form ---- */
+    .ahm-form {
+      border: 1px solid var(--ahm-line); border-radius: 10px; padding: 34px 30px;
+      background: rgba(255, 255, 255, 0.02);
+    }
+    .ahm-form__row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .ahm-field { margin-bottom: 18px; }
+    .ahm-field label {
+      display: block; font-family: 'Barlow', sans-serif; font-weight: 600; font-size: 0.82rem;
+      letter-spacing: 0.08em; text-transform: uppercase; color: var(--ahm-blue); margin-bottom: 7px;
+    }
+    .ahm-field input, .ahm-field textarea {
+      width: 100%; padding: 12px 14px; background: rgba(10, 10, 10, 0.5);
+      border: 1px solid var(--ahm-line); border-radius: 5px; color: var(--ahm-text);
+      font-family: 'Barlow', sans-serif; font-size: 1rem; transition: border-color 0.2s ease;
+    }
+    .ahm-field input:focus, .ahm-field textarea:focus { outline: none; border-color: var(--ahm-blue); }
+    .ahm-field textarea { resize: vertical; min-height: 140px; }
+    .ahm-form__note { color: #8a8a8a; font-size: 0.82rem; margin: 10px 0 0; }
+
+    /* ============================================================ FOOTER ============================================================ */
+    .ahm-footer { text-align: center; padding: 54px 24px 60px; }
+    .ahm-footer__social { display: inline-flex; margin-bottom: 20px; }
+    .ahm-footer__social img { width: 30px; height: 30px; opacity: 0.7; transition: opacity 0.25s ease, transform 0.25s ease; }
+    .ahm-footer__social:hover img { opacity: 1; transform: scale(1.1); }
+    .ahm-footer__copy { color: #8a8a8a; font-size: 0.85rem; letter-spacing: 0.04em; }
+
+    /* ============================================================ REVEAL ============================================================ */
+    .ahm-reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .ahm-reveal--in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .ahm-reveal { opacity: 1; transform: none; } html { scroll-behavior: auto; } }
+
+    /* ============================================================ RESPONSIVE ============================================================ */
+    @media (max-width: 820px) {
+      .ahm-section { padding: 70px 0; }
+      .ahm-contact { grid-template-columns: 1fr; gap: 40px; }
+      .ahm-form__row { grid-template-columns: 1fr; gap: 0; }
+      .ahm-nav { gap: 20px; }
+      .ahm-nav__link { font-size: 0.8rem; }
+      .ahm-header__logo img { height: 30px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="ahm-header" id="ahmHeader">
+    <a href="index.html" class="ahm-header__logo" aria-label="Anton Hagop Mixing - home">
+      <img src="images/logo.png" alt="Anton Hagop Mixing">
+    </a>
+    <nav class="ahm-nav">
+      <a href="index.html" class="ahm-nav__link">Home</a>
+      <a href="mixing.html" class="ahm-nav__link">Mixing</a>
+      <a href="listen.html" class="ahm-nav__link">Listen</a>
+      <a href="contact.html" class="ahm-nav__link ahm-nav__link--active" aria-current="page">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="ahm-hero">
+      <div class="ahm-hero__bg"></div>
+      <div class="ahm-hero__veil"></div>
+      <div class="ahm-hero__inner">
+        <p class="ahm-eyebrow">Contact</p>
+        <h1 class="ahm-hero__title">Reach Out</h1>
+        <p class="ahm-hero__sub">Tell me about your project!</p>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="ahm-section">
+      <div class="ahm-wrap ahm-contact ahm-reveal">
+
+        <!-- left: what to tell me + genres -->
+        <div>
+          <p class="ahm-eyebrow">A few things to mention</p>
+          <h2 class="ahm-h2">Tell Me About<br>Your Project</h2>
+          <ul class="ahm-checklist">
+            <li>Genre / general vibe</li>
+            <li>How / where was the material recorded?</li>
+            <li>Any concerns with the quality or sounds?</li>
+            <li>How many tracks per song roughly?</li>
+            <li>Any pressing deadlines?</li>
+          </ul>
+
+          <div class="ahm-genres">
+            <h3>Genres</h3>
+            <p>As a mixer I&rsquo;m pretty versatile but I gravitate towards human-generated music featuring olde
+              worlde instruments like guitars and drums. Acoustic through to metal is all good but don&rsquo;t worry
+              &ndash; I&rsquo;ll let you know if I&rsquo;m not the right fit for the project. Hip hop, pop and
+              electronic artists &ndash; I&rsquo;m not your guy.</p>
+          </div>
+        </div>
+
+        <!-- right: form -->
+        <!-- NOTE: static site has no backend. Set the form `action` to your own
+             handler (Formspree / Netlify Forms / Basin) or give me your contact
+             email and I'll switch this to a mailto: form. -->
+        <form class="ahm-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <div class="ahm-form__row">
+            <div class="ahm-field">
+              <label for="ahm-name">Name *</label>
+              <input id="ahm-name" name="name" type="text" required>
+            </div>
+            <div class="ahm-field">
+              <label for="ahm-band">Band (Optional)</label>
+              <input id="ahm-band" name="band" type="text">
+            </div>
+          </div>
+          <div class="ahm-form__row">
+            <div class="ahm-field">
+              <label for="ahm-email">Email *</label>
+              <input id="ahm-email" name="email" type="email" required>
+            </div>
+            <div class="ahm-field">
+              <label for="ahm-phone">Phone (Optional)</label>
+              <input id="ahm-phone" name="phone" type="tel">
+            </div>
+          </div>
+          <div class="ahm-field">
+            <label for="ahm-subject">Subject *</label>
+            <input id="ahm-subject" name="subject" type="text" required>
+          </div>
+          <div class="ahm-field">
+            <label for="ahm-message">Message *</label>
+            <textarea id="ahm-message" name="message" required></textarea>
+          </div>
+          <button type="submit" class="ahm-btn" style="margin-top:4px;">Submit</button>
+          <p class="ahm-form__note">I&rsquo;ll get back to you to chat about your mix.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="ahm-footer">
+    <a class="ahm-footer__social" href="https://www.instagram.com/antonhagopmixing/" target="_blank"
+      rel="noopener" aria-label="Anton Hagop Mixing on Instagram">
+      <img src="images/instagram.png" alt="Instagram">
+    </a>
+    <p class="ahm-footer__copy">Copyright &copy; 2026 &ndash; Anton Hagop Mixing &ndash; All Rights Reserved.</p>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script>
+    (function () {
+      var header = document.getElementById('ahmHeader');
+      var lastY = window.pageYOffset; var ticking = false; var DELTA = 6, TOP_LOCK = 84;
+      function onScroll() {
+        var y = window.pageYOffset;
+        header.classList.toggle('ahm-header--scrolled', y > 10);
+        if (Math.abs(y - lastY) >= DELTA) {
+          if (y > lastY && y > TOP_LOCK) { header.classList.add('ahm-header--hidden'); }
+          else { header.classList.remove('ahm-header--hidden'); }
+          lastY = y;
+        }
+        ticking = false;
+      }
+      window.addEventListener('scroll', function () {
+        if (!ticking) { window.requestAnimationFrame(onScroll); ticking = true; }
+      }, { passive: true });
+    })();
+
+    (function () {
+      var els = document.querySelectorAll('.ahm-reveal');
+      if (!('IntersectionObserver' in window)) { els.forEach(function (el) { el.classList.add('ahm-reveal--in'); }); return; }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('ahm-reveal--in'); io.unobserve(e.target); } });
+      }, { threshold: 0.12 });
+      els.forEach(function (el) { io.observe(el); });
+    })();
+  </script>
+
+  <!-- ===== Soft / momentum scrolling (Lenis) - matches Zen Amps ===== -->
+  <style>
+    html.ahm-sb-on { scrollbar-width: none; }
+    html.ahm-sb-on::-webkit-scrollbar { width: 0; height: 0; }
+    .ahm-sb { position: fixed; top: 0; right: 0; width: 12px; height: 100vh; z-index: 9990; pointer-events: none; }
+    .ahm-sb__thumb {
+      position: absolute; top: 0; right: 3px; width: 6px; border-radius: 3px;
+      background: rgba(146, 164, 177, 0.45); cursor: grab; pointer-events: auto;
+      will-change: transform; transition: background .2s ease, width .12s ease;
+    }
+    .ahm-sb__thumb:hover { background: rgba(146, 164, 177, 0.7); width: 8px; }
+    .ahm-sb__thumb.is-grabbing { background: rgba(146, 164, 177, 0.92); width: 8px; cursor: grabbing; }
+    @media (hover: none) { .ahm-sb { display: none; } }
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.13/dist/lenis.css">
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script>
+    (function () {
+      if (!window.Lenis) return;
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var EASE = function (t) { return 1 - Math.pow(1 - t, 4); };
+      var lenis = new Lenis({ duration: 1.2, easing: EASE, smoothWheel: true, wheelMultiplier: 1.0, touchMultiplier: 1.0, anchors: true, stopInertiaOnNavigate: true });
+      window.ahmLenis = lenis;
+      function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+      requestAnimationFrame(raf);
+      if (!(window.matchMedia && window.matchMedia('(hover: none)').matches)) {
+        var SB_HALT = 0.8;
+        var bar = document.createElement('div'); bar.className = 'ahm-sb';
+        var thumb = document.createElement('div'); thumb.className = 'ahm-sb__thumb';
+        bar.appendChild(thumb); document.body.appendChild(bar);
+        document.documentElement.classList.add('ahm-sb-on');
+        function vh() { return window.innerHeight; }
+        function clamp(v, a, b) { return v < a ? a : (v > b ? b : v); }
+        function thumbH() { var docH = lenis.limit + vh(); return Math.max(40, (vh() / docH) * vh()); }
+        function render() {
+          var th = thumbH(); var maxTop = vh() - th;
+          var p = lenis.limit ? clamp(lenis.scroll / lenis.limit, 0, 1) : 0;
+          thumb.style.height = th + 'px'; thumb.style.transform = 'translate3d(0,' + (p * maxTop) + 'px,0)';
+        }
+        lenis.on('scroll', render); window.addEventListener('resize', render); render();
+        var dragging = false, startY = 0, startScroll = 0, startMaxTop = 1;
+        thumb.addEventListener('pointerdown', function (e) {
+          dragging = true; startY = e.clientY; startScroll = lenis.scroll;
+          startMaxTop = Math.max(1, vh() - thumbH());
+          try { thumb.setPointerCapture(e.pointerId); } catch (_) { }
+          thumb.classList.add('is-grabbing'); e.preventDefault();
+        });
+        window.addEventListener('pointermove', function (e) {
+          if (!dragging) return;
+          var dy = e.clientY - startY;
+          var target = clamp(startScroll + (dy / startMaxTop) * lenis.limit, 0, lenis.limit);
+          lenis.scrollTo(target, { duration: SB_HALT, easing: EASE, force: true });
+        });
+        window.addEventListener('pointerup', function (e) {
+          if (!dragging) return; dragging = false;
+          try { thumb.releasePointerCapture(e.pointerId); } catch (_) { }
+          thumb.classList.remove('is-grabbing');
+        });
+      }
+    })();
+  </script>
+</body>
+
+</html>
